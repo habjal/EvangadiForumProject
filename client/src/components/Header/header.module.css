@@ -1,0 +1,68 @@
+/* Header.css */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+.header {
+    padding: 10px;
+    position: fixed;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(69, 85, 111, 0.271);
+    width: 100%;
+    background: #fff;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2px 0px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #007bff;
+    /* Blue color */
+}
+
+.nav {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: space-between;
+    height: fit-content;
+    padding: 19px;
+}
+
+.nav_link {
+    text-decoration: none;
+    color: #344767;
+    font-size: 16px;
+    font-family: "Roboto", system-ui;
+    font-weight: 500;
+    font-style: normal;
+    height: fit-content;
+    margin-left: 23px;
+}
+
+.nav li {
+    list-style: none;
+    max-height: 100vh;
+}
+
+.nav_link:hover {
+    color: #FF8500;
+}
+
+@media (max-width: 450px) {
+    .nav {
+        display: none !important;
+    }
+
+    .container {
+        flex-direction: column;
+        align-items: center;
+        padding: 5px;
+    }
+}

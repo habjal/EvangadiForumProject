@@ -1,13 +1,13 @@
-import { useState } from "react";
-import "./App.css";
-
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import './App.css'
+import Police from './pages/privacy-policy/Privacy-police';
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <>
-      <h1>evangadi forum starter project</h1>
-    </>
+    <Router>
+      <Routes>
+        <Route path="/legal/privacy/" element={<Police />} />
+      </Routes>
+    </Router>
   );
 }
 
