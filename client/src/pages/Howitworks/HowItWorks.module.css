@@ -1,0 +1,151 @@
+.container {
+    padding: 20px;
+    max-width: auto;
+    margin: 10px auto;
+    background-image: url('../../Assets/howitworkbg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    color: #333;
+
+}
+
+.title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 1.5px;
+}
+
+.description {
+    text-align: center;
+    font-size: 1.3rem;
+    margin-bottom: 50px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.steps {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.step {
+    background-color: #f9f9f9;
+    /* Softer light gray tone */
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(117, 68, 68, 0.26);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.step:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.step h3 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 15px;
+    font-family: 'Montserrat', sans-serif;
+    position: relative;
+}
+
+.step h3::after {
+    content: '';
+    width: 70px;
+    height: 3px;
+    background-color: #bd1414;
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+}
+
+.step p {
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Parent container or body styles */
+body,
+.parentContainer {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    /* Horizontal centering */
+    align-items: center;
+    /* Vertical centering */
+    height: 100vh;
+    /* Full viewport height for vertical centering */
+    margin: 0;
+    /* Remove default margins */
+}
+
+/* Container styling */
+.buttonContainer {
+    align-items: center;
+    gap: 15px;
+   padding: 40px;
+    margin-top: auto;
+    
+}
+
+/* Button styling */
+.signupButton {
+    background-color: #4285f4;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    
+}
+
+.signupButton:hover {
+    background-color: #357ae8;
+}
+
+/* Link styling */
+.login {
+    color: #4285f4;
+    font-size: 14px;
+    text-decoration: none;
+    transition: text-decoration 0.3s ease;
+}
+
+.login:hover {
+    text-decoration: underline;
+}
+
+
+
+@media (min-width: 600px) {
+    .steps {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .step {
+        flex: 1;
+        margin: 0 15px;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

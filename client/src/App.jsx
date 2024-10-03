@@ -1,12 +1,15 @@
 import { useState } from "react";
 import "./App.css";
-
+import HowitWorks from "./pages/Howitworks/HowItWorks";
+import { Route, Routes } from "react-router-dom";
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <>
-      <h1>evangadi forum starter project</h1>
+      <Routes>
+        <Route path="/howitworks" element={<HowitWorks />} />
+      </Routes>
     </>
   );
 }
