@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./questionCard.module.css";
 import { MdAccountCircle } from "react-icons/md";
 import { FaChevronRight } from "react-icons/fa6";
-function QuestionCard({ userName, questionTitle,description }) {
+function QuestionCard({ userName, questionTitle,description,question_date }) {
   return (
     <div className={styles.question_holder}>
       <div className={styles.requester_question_holder}>
@@ -14,6 +14,7 @@ function QuestionCard({ userName, questionTitle,description }) {
         <div className={styles.title_description_holder}>
           <p className={styles.question_title}>{questionTitle}</p>
           <p>{description}</p>
+          <p>{question_date}</p>
         </div>
       </div>
 

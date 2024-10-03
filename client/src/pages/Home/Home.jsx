@@ -41,6 +41,7 @@ function Home() {
               80
             ) + " . . ."
           }
+          question_date={"Sept 3,2024"}
         />
         <QuestionCard
           userName={"testUser"}
