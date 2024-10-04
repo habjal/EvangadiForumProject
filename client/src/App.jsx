@@ -1,13 +1,12 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import './App.css'
-import Police from './pages/privacy-policy/Privacy-police';
+import { useState } from "react";
+import "./App.css";
+import Answer from "./pages/Answer/Answer";
+
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/legal/privacy/" element={<Police />} />
-      </Routes>
-    </Router>
+    <>
+      <Answer />
+    </>
   );
 }
 
