@@ -1,12 +1,18 @@
 import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
+import Privacy from "./components/Footer/Privacy";
+import Terms from "./components/Footer/Terms";
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <>
-      <h1>evangadi forum starter project</h1>
+      <Routes>
+        <Route path="/Privacy" element={<Privacy />} />
+        <Route path="/Terms" element={<Terms />} />
+      </Routes>
     </>
   );
 }
