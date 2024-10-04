@@ -46,6 +46,7 @@
     background-color: #ff914d;  /* orange color */
     clip-path: polygon(100% 0, 0 100%, 100% 100%);
   }
+  
    /* ///media query for responsiveness */
   @media (max-width: 768px) {
     .about-section {
