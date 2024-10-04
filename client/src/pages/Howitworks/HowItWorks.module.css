@@ -71,31 +71,26 @@
     line-height: 1.6;
 }
 
-/* Parent container or body styles */
+
 body,
 .parentContainer {
     display: flex;
     justify-content: center;
     text-align: center;
-    /* Horizontal centering */
     align-items: center;
-    /* Vertical centering */
     height: 100vh;
-    /* Full viewport height for vertical centering */
-    margin: 0;
-    /* Remove default margins */
+    /* margin: 0; */
+    padding: auto;
 }
 
-/* Container styling */
+
 .buttonContainer {
     align-items: center;
-    gap: 15px;
-   padding: 40px;
+    gap: 10px;
+    padding: 40px;
     margin-top: auto;
-    
 }
 
-/* Button styling */
 .signupButton {
     background-color: #4285f4;
     color: white;
@@ -118,6 +113,7 @@ body,
     font-size: 14px;
     text-decoration: none;
     transition: text-decoration 0.3s ease;
+    margin-left: 10px;
 }
 
 .login:hover {
