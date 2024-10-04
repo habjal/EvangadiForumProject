@@ -1,11 +1,14 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import './App.css'
-
+import { useState } from "react";
+import "./App.css";
+import HowitWorks from "./pages/Howitworks/HowItWorks";
+import { Route, Routes } from "react-router-dom";
 function App() {
   return (
-   <>
-    app
-   </>
+    <>
+      <Routes>
+        <Route path="/howitworks" element={<HowitWorks />} />
+      </Routes>
+    </>
   );
 
 }
