@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import styles from "./question.module.css";
-import { axiosInstance } from "../../utility/axios";
+import styles from "./questions.module.css";
+import {axiosInstance} from "../../utility/axios";
 import QuestionCard from "../../components/QuestionCard/QuestionCard";
 import Loader from "../../components/Loader/Loder";
 

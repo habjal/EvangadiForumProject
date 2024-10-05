@@ -1,0 +1,21 @@
+.container{ 
+    display: flex;
+    justify-content: center !important;
+    /* background-color: black; */
+    height: 100vh;
+    background-image: url('../../assets/Images/howitworkbg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+} 
+
+.inner_container{
+    display: flex;
+    /* justify-content: center; */
+    max-width: 1200px;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    /* height: 100vh; */
+    gap: 10px;
+    /* background-color: black; */
+}

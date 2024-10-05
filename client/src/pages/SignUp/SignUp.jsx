@@ -1,9 +1,9 @@
-
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import classes from "./signUp.module.css";
+import Login from "../Login/Login";
 
-function Signup() {
+function Signup({ onSwitch }) {
   const [formData, setFormData] = useState({
     username: "",
     firstName: "",
@@ -60,7 +60,7 @@ function Signup() {
       setSuccess(null); // clear any previous success message
     }
   };
-  <SignIn />;
+  <Login />;
   // Reset the form data after a successful registration
   useEffect(() => {
     if (success) {
@@ -84,7 +84,7 @@ function Signup() {
       <h2>Join the network</h2>
       <p className="signin-text">
         Already have an account?{" "}
-        <a href="http://localhost:5173/login">Sign in</a>
+        <a onClick={onSwitch}  style={{ cursor: "pointer" ,color:"var(--primary-color)"}}>Sign in</a>
       </p>
       {error && <p className={classes.error}>{error}</p>}{" "}
       {/* Display error message */}
@@ -134,19 +134,19 @@ function Signup() {
             onChange={handleChange}
             required
           />
-          <button type="button" onClick={handleTogglePassword}>
+          <button type="button" onClick={handleTogglePassword} className={classes.togglebtn}>
             {showPassword ? "🙉" : "🙈"} {/* Toggle between 🙈 and 🙉 */}
           </button>
-          <label>
+          <div style={{padding: "10px"}}>
             I agree to the <a href="#">privacy policy</a> and{" "}
             <a href="#">terms of service</a>.
-          </label>
+          </div>
         </div>
         <button type="submit" className={classes.submitbtn}>
           Agree and Join
         </button>
         <p className={classes.signintext}>
-          <a href="http://localhost:5173/login">Already have an account?</a>
+          <a onClick={onSwitch}  style={{ cursor: "pointer" ,color:"var(--primary-color)"}}>Already have an account?</a>
         </p>
       </form>
     </div>
@@ -154,6 +154,3 @@ function Signup() {
 }
 
 export default Signup;
-
-
-

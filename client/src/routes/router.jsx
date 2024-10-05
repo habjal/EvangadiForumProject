@@ -9,6 +9,7 @@ import Privacy from '../components/Footer/Privacy'
 import QuestionAndAnswer from "../pages/QuestionAndAnswer/QuestionAndAnswer";
 
 import Answer from "../pages/Answer/Answer";
+import AuthLayout from "../pages/AuthLayout/AuthLayout";
 
 function AppRouter() {
     return (
@@ -19,8 +20,8 @@ function AppRouter() {
                 <Route path="/question/:questionId" element={<QuestionAndAnswer/>}/>
                 <Route path='/howitworks' element={<HowItWorks/>}/>
                 <Route path="/terms" element={<Terms/>}/>
-                <Route path="*" element={<Home/>}/>
                 <Route path="/PrivacyPolicy" element={<Answer/>} />
+                <Route path="/auth" element={<AuthLayout/>} />
 
             </Routes>
         </Router>

@@ -9,14 +9,14 @@ function QuestionCard({ id,userName, questionTitle,description,question_date }) 
     <div className={styles.question_holder}>
         <div className={styles.requester_question_holder}>
             <div className={styles.requester_holder}>
-              <MdAccountCircle size={40} />
+              <MdAccountCircle size={50} />
               <div>{userName}</div>
             </div>
 
             <div className={styles.title_description_holder}>
               <p className={styles.question_title}>{questionTitle}</p>
               <p>{description}</p>
-              <p>{question_date}</p>
+              <p className={styles.question_date}>{question_date}</p>
             </div>
           </div>
 

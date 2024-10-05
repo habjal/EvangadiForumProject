@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./home.module.css";
 import { BsArrowRightSquareFill } from "react-icons/bs";
-import Question from "../Question/Question";
+import Questions from "../Question/Questions";
 import Layout from "../../Layout/Layout";
 import { Link } from "react-router-dom";
 
@@ -12,7 +12,7 @@ function Home() {
       <div className={styles.home_container}>
         <div className={styles.ask_welcome_holder}>
           <div className={styles.ask_question}>
-            <Link to="/ask">
+            <Link to="/ask" style={{ textDecoration: "none" }}>
               <button className={styles.ask_btn}>
                 <span>I've got a question</span>
                 <BsArrowRightSquareFill
@@ -30,7 +30,7 @@ function Home() {
         </div>
 
         <div className={styles.questions_list}>
-          <Question />
+          <Questions />
         </div>
       </div>
     </Layout>
