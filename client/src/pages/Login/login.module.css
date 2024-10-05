@@ -1,0 +1,100 @@
+.formcontainer {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 2rem;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.logintext {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.error {
+  color: red;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.success {
+  color: green;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.passwordinput {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.passwordinput button {
+  position: absolute;
+  top: 35%;
+  right: 10px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+}
+.passwordinput input {
+  flex-grow: 1;
+  
+}
+
+.passwordinput button {
+  
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.submitbtn {
+  padding: 0.75rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+
+}
+
+.submitbtn:hover {
+  background-color: #0056b3;
+}
+
+.forgotpasswordtext {
+  text-align: end;
+
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+  color: #ff6600;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
