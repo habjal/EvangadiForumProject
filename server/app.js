@@ -12,11 +12,15 @@ const port = 5500;
 // middleware for staic files
 const userrouter = require("./routes/userRoutes");
 
+
 // json middile ware to extract jason data
 app.use(express.json());
 
-// user routes middleware
+// user routes middleware for all ppages that send request on the brower that leads to router
 app.use("/api/users", userrouter);
+
+
+
 
 // database connection
 const dbconnection = require("./config/dbconfig");
@@ -32,7 +36,6 @@ async function start() {
   }
 }
 start();
-// question and answer middle ware has to be set here
 
 // app.listen(port, (err) => {
 //   if (err) {
