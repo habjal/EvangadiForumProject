@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useRef } from "react";
 import classes from "./askQuestion.module.css";
 import axios from "../../../axiosConfig";
+import { Link } from "react-router-dom";
+import Layout from "../../../Layout/Layout";
 // import { StatusCodes } from "http-status-codes";
 // import { useNavigate } from "react-router-dom";
 
@@ -40,7 +42,7 @@ function AskQuestion() {
   }
 
   return (
-    <>
+    <Layout>
       <div className={classes.question__container}>
         <div className={classes.question__wrapper}>
           <h3 className={classes.question__header__title}>
@@ -85,20 +87,22 @@ function AskQuestion() {
                   Post Question
                 </button>
                 <span>
-                  <button
-                    className={classes.question__btn}
-                    variant="success"
-                    type="submit"
-                  >
-                    Back to Home
-                  </button>
+                  <Link to={"/"}>
+                    <button
+                      className={classes.question__btn}
+                      variant="success"
+                      type="submit"
+                    >
+                      Back to Home
+                    </button>
+                  </Link>
                 </span>
               </span>
             </form>
           </div>
         </div>
       </div>
-    </>
+    </Layout>
   );
 }
 

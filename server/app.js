@@ -1,44 +1,47 @@
 const express = require("express");
 const app = express();
-const port = 5500;
+const port = 5000;
+const authMiddleware = require("./middleware/authMiddleware");
+const cors = require("cors");
 
-// checking server is responsive on the browser
-// app.get("/", (req, res) => {
-//   res.send("wellcome to evangadi forumserver");
-// });
+//db connection
+const dbConnection = require("./config/dbconfig");
 
-// middleware for staic files
-const userrouter = require("./routes/userRoutes");
+// test get request
+app.get("/", (req, res) => {
+  res.status(200).send("welcome");
+});
+//cors middleware
+app.use(cors((origins = ["http://localhost:5173"])));
 
-
-// json middile ware to extract jason data
+//json middleware
 app.use(express.json());
 
-// user routes middleware for all ppages that send request on the brower that leads to router
-app.use("/api/users", userrouter);
+// user routes middleware file import
+const userRoutes = require("./routes/userRoutes");
 
+// user routes middleware
+app.use("/api/v1/user", userRoutes);
 
+// questions routes middleware file import
+const questionRoutes = require("./routes/questionRoute");
+// questions routes middleware
+app.use("/api/v1", [questionRoutes]);
+// answers routes middleware file import
+const answerRoutes = require("./routes/answerRoute");
 
+// answers routes middleware
+app.use("/api/v1", answerRoutes);
 
-// database connection
-const dbconnection = require("./config/dbconfig");
 async function start() {
   try {
-    const results = await dbconnection.execute("select 'test'");
-    console.log(results);
-    app.listen(port);
-    console.log("database connected");
-    console.log(`Server is running on port ${port}`);
-  } catch (error) {
-    console.log(error.message);
+    const result = await dbConnection.execute("select 'test'");
+    console.log("db connected");
+    await app.listen(port);
+    console.log(`server running and listening on port ${port}`);
+  } catch (err) {
+    console.log(err.message);
   }
 }
-start();
 
-// app.listen(port, (err) => {
-//   if (err) {
-//     console.log(err.message);
-//   } else {
-//     console.log(`Listening on port ${port}`);
-//   }
-// });
+start();

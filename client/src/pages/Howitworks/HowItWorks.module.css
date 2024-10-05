@@ -1,8 +1,8 @@
 .container {
     padding: 20px;
     max-width: auto;
-    margin: 10px auto;
-    background-image: url('../../Assets/howitworkbg.jpg');
+    /* margin: 10px auto; */
+    background-image: url('../../Assets/Images/howitworkbg.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -72,7 +72,6 @@
 }
 
 
-body,
 .parentContainer {
     display: flex;
     justify-content: center;
@@ -89,6 +88,7 @@ body,
     gap: 10px;
     padding: 40px;
     margin-top: auto;
+    text-align: center;
 }
 
 .signupButton {
@@ -96,6 +96,7 @@ body,
     color: white;
     border: none;
     padding: 10px 20px;
+    margin-right: 10px;
     border-radius: 6px;
     cursor: pointer;
     font-size: 16px;

@@ -1,10 +1,12 @@
 import React from 'react'
 import Classes from "./footer.module.css";
 import { Link } from "react-router-dom";
+import Layout from '../../Layout/Layout';
 
 function Privacy() {
   return (
-    <div className={Classes.terms}>
+  <Layout>
+      <div className={Classes.terms}>
       <div className={Classes.termsHeader}>
         <h2>Privacy Policy</h2>
       </div>
@@ -212,6 +214,7 @@ function Privacy() {
         </p>
       </div>
     </div>
+  </Layout>
   );
 }
 

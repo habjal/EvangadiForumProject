@@ -1,6 +1,7 @@
 import React from "react";
 import classes from "./header.module.css";
 import EvangadiLogo from "../../Assets/Images/evangadi-logo-header.png";
+import { Link } from "react-router-dom";
 
 function Header() {
   return (
@@ -9,13 +10,15 @@ function Header() {
         <div className={classes.header_container}>
           <div className={classes.left_container}>
             <div className={classes.logo_container}>
-              <img src={EvangadiLogo} alt="Evangadi Logo" />
+              <Link to="/">
+                <img src={EvangadiLogo} alt="Evangadi Logo" />
+              </Link>
             </div>
           </div>
           <div className={classes.right_container}>
             <nav className={classes.nav_links}>
-              <a href="#">Home</a>
-              <a href="#">How it Works</a>
+              <Link to="/">Home</Link>
+              <Link to="howitworks">How it Works</Link>
             </nav>
             <button className={classes.logout_btn}>Log Out</button>
           </div>
@@ -24,6 +27,5 @@ function Header() {
     </>
   );
 }
-
 
 export default Header;
