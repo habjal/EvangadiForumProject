@@ -1,8 +1,11 @@
 const express = require("express");
 const app = express();
-const port = 5000;
 const authMiddleware = require("./middleware/authMiddleware");
 const cors = require("cors");
+
+const dotenv = require("dotenv");
+dotenv.config();
+const port = process.env.VITE_SERVER_PORT;
 
 //db connection
 const dbConnection = require("./config/dbconfig");
