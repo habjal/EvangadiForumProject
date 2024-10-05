@@ -2,9 +2,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px;
+    padding: 10px 20px;
     border: 1.5px solid var(--blue-shade);
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     border-radius: 5px;
 }
 
@@ -16,13 +16,13 @@
 }
 
 .requester_holder{
-    width: 140px;
+    width: 100px;
     padding: 10px;
     display: flex;
     font-weight: 500;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     gap: 5px;
 }
 
@@ -34,11 +34,16 @@
 
 .title_description_holder{
     display: flex;
-    gap: 5px;
+    /* gap: 5px; */
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
 
+}
+
+.title_description_holder p{
+    margin: 0;
+    padding: 5px;
 }
 
 .question_title{

@@ -4,41 +4,6 @@
   background-color: #fff;
 }
 
-/* Header Styles */
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px 32px;
-  background-color: #f8f8f8;
-}
-
-.logo {
-  font-size: 24px;
-  font-weight: bold;
-}
-
-.nav {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-}
-
-.navLink {
-  text-decoration: none;
-  color: #333;
-  font-weight: bold;
-}
-
-.logoutButton {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
 /* Main Content Styles */
 .main {
   padding: 32px;

@@ -25,7 +25,7 @@
 }
 .footer_icons a:hover{
     transform: scale(1.09);
-    color: white !important
+    color: var(--primary-color)
 }
 .footer_icons a{
     color: #e3e1e1f3;
@@ -79,7 +79,7 @@
 /* Terms and privacy css */
 
 .termsHeader {
-  background-image: url("./Image/10001.png"); 
+  background-image: url("../../Assets/Images/bg-transparent6.png"); 
   background-size: cover;  
   background-repeat: no-repeat; 
   background-position: center; 

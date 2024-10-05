@@ -20,18 +20,6 @@ const Answer = () => {
 
   return (
     <div className={styles.container}>
-      <header className={styles.header}>
-        <h1 className={styles.logo}>EVANGADI</h1>
-        <nav className={styles.nav}>
-          <a href="#" className={styles.navLink}>
-            Home
-          </a>
-          <a href="#" className={styles.navLink}>
-            How it Works
-          </a>
-          <button className={styles.logoutButton}>Logout</button>
-        </nav>
-      </header>
 
       <main className={styles.main}>
         <section className={styles.questionSection}>

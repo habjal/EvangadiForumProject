@@ -5,6 +5,7 @@ import FacebookOutlined from "@mui/icons-material/FacebookOutlined";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import { Link } from "react-router-dom";
+import footerLogo from "../../Assets/Images/evangadi-logo-footer.png";
 
 function Footer() {
   return (
@@ -13,7 +14,7 @@ function Footer() {
         <div className={classes.footer_logo}>
           <Link to="/">
             <img
-              src="https://www.evangadi.com/themes/humans//assets/images/misc/evangadi-logo-footer.png"
+              src={footerLogo}
               alt=""
             />
           </Link>
@@ -50,7 +51,7 @@ function Footer() {
           </li>
           <li className={classes.privacy}>
             <Link
-              to="/Privacy/"
+              to="/PrivacyPolicy/"
               style={{ textDecoration: "none", color: "#959CA4" }}
             >
               Privacy policy

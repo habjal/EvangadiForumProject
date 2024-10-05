@@ -1,16 +1,12 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styles from "./HowItWorks.module.css";
+import Layout from "../../Layout/Layout";
 
 const HowItWorks = () => {
-  const navigate = useNavigate();
-
-  const goToSignup = () => {
-    navigate("/signup");
-  };
-
   return (
-    <div className={styles.container}>
+   <Layout>
+     <div className={styles.container}>
       <h2 className={styles.title}>Purpose of the Platform</h2>
       <p className={styles.description}>
         The site’s purpose is to foster collaborative learning among students by
@@ -54,16 +50,19 @@ const HowItWorks = () => {
 
       <div className="parentContainer">
         <div className={styles.buttonContainer}>
-          <button className={styles.signupButton} onClick={goToSignup}>
-            Join us Sign Up Now
-          </button>
-
-          <a href="./login" className={styles.login}>
-            Login
-          </a>
+          <Link to={"/signup"}>
+            <button className={styles.signupButton}>Join us Sign Up Now</button>
+          </Link>
+          <span>
+            Already have an account?
+            <Link to="/login" className={styles.login}>
+              Login
+            </Link>
+          </span>
         </div>
       </div>
     </div>
+   </Layout>
   );
 };
 

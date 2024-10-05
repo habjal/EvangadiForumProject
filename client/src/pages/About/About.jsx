@@ -1,10 +1,10 @@
 import React from "react";
 
-import styles from "./About/about.modules.css";
+import styles from "./about.module.css";
 
 const About = () => {
   return (
-    <section className={styles.about - section}>
+    <section className={styles.about_section}>
       <h2>About</h2>
       <h1>Evangadi Networks</h1>
       <p>
@@ -16,8 +16,8 @@ const About = () => {
         Whether you are willing to share your knowledge or you are just looking
         to meet mentors of your own, please start by joining the network here.
       </p>
-      <button className={styles.how - it - works - btn}>HOW IT WORKS</button>
-      <div className={styles.design - shape}></div>
+      <button className={styles.how_it_works_btn}>HOW IT WORKS</button>
+      {/* <div className={styles.design_shape}></div> */}
     </section>
   );
 };

@@ -1,10 +1,12 @@
 import React from "react";
 import Classes from "./footer.module.css";
 import { Link } from "react-router-dom";
+import Layout from "../../Layout/Layout";
 
 function Terms() {
   return (
-    <div className={Classes.terms}>
+   <Layout>
+     <div className={Classes.terms}>
       <div className={Classes.termsHeader}>
         <h2>Terms and Conditions</h2>
       </div>
@@ -350,6 +352,7 @@ function Terms() {
         </p>
       </div>
     </div>
+   </Layout>
   );
 }
 

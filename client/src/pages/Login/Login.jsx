@@ -1,18 +1,17 @@
 import React, { useState } from "react";
 import axios from "axios";
-import classes from "./login.module.css"; 
+import classes from "./login.module.css";
 
-function Login() {
+function Login({ onSwitch }) {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
 
-  const [error, setError] = useState(null); 
-  const [success, setSuccess] = useState(null); 
-  const [showPassword, setShowPassword] = useState(false); 
+  const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(null);
+  const [showPassword, setShowPassword] = useState(false);
 
-  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -21,37 +20,34 @@ function Login() {
     });
   };
 
-  
   const handleTogglePassword = () => {
     setShowPassword((prev) => !prev);
   };
 
-    const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       const response = await axios.post(
         "http://localhost:5173/api/users/Login",
         {
-          
           email: formData.email,
-          Password: formData.password, 
+          Password: formData.password,
         }
       );
 
       if (response.status === 200) {
-        setSuccess("Login successful! Redirecting..."); 
-        setError(null); 
-      
+        setSuccess("Login successful! Redirecting...");
+        setError(null);
       } else {
-        setError(response.data.msg || "Login failed."); 
-        setSuccess(null); 
+        setError(response.data.msg || "Login failed.");
+        setSuccess(null);
       }
     } catch (err) {
       setError(
         err.response?.data?.msg || "Error logging in. Please try again."
-      ); 
-      setSuccess(null); 
+      );
+      setSuccess(null);
     }
   };
 
@@ -59,12 +55,21 @@ function Login() {
     <div className={classes.formcontainer}>
       <h2>Login to your account</h2>
       <p className={classes.signuptext}>
-        Don't have an account? <a href="/">create a new account</a>
+        Don't have an account?{" "}
+        <a
+          onClick={onSwitch}
+          style={{ cursor: "pointer", color: "var(--primary-color)" }}
+        >
+          create a new account
+        </a>
       </p>
-      {error && <p className={classes.error}>{error}</p>}{" "}
+      {error && (
+        <p className={classes.error} style={{ marginBottom: "10px" }}>
+          {error}
+        </p>
+      )}{" "}
       {/* Display error message */}
-      {success && <p className={classes.success}>{success}</p>}{" "}
-      Display success message
+      {success && <p className={classes.success}>{success}</p>}
       <form onSubmit={handleSubmit}>
         <input
           type="email"
@@ -76,7 +81,7 @@ function Login() {
         />
         <div className={classes.passwordinput}>
           <input
-            type={showPassword ? "text" : "password"} 
+            type={showPassword ? "text" : "password"}
             name="password"
             placeholder="Password"
             value={formData.password}
@@ -88,7 +93,7 @@ function Login() {
           </button>
         </div>
         <p className={classes.forgotpasswordtext}>
-          <a href="#">Forgot password?</a>
+          <a href="forgetPass">Forgot password?</a>
         </p>
         <button type="submit" className={classes.submitbtn}>
           Login
