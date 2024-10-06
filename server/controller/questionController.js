@@ -6,7 +6,7 @@ const crypto = require("crypto");
 async function postQuestion(req, res) {
   const { userid, title, description, tag } = req.body;
   if (!userid || !title || !description) {
-    res
+  return  res
       .status(StatusCodes.BAD_REQUEST)
       .json({ message: "All fields are required" });
   }

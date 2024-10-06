@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useRef } from "react";
 import classes from "./askQuestion.module.css";
-import axios from "../../../axiosConfig";
+import {axiosInstance} from "../../../utility/axios";
 import { Link } from "react-router-dom";
 import Layout from "../../../Layout/Layout";
 // import { StatusCodes } from "http-status-codes";
@@ -28,7 +28,7 @@ function AskQuestion() {
     const description = descriptionDom.current.value; // Make a POST request to your server to create a new question
 
     // Make a POST request to your server to create a new question
-    const response = await axios.post("/api/questions", { title, description });
+    const response = await axiosInstance.post("/api/questions", { title, description });
 
     try {
       if (response.status === 201) {

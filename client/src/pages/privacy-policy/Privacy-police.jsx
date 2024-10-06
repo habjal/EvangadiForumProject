@@ -114,13 +114,13 @@ function PrivacyPolice() {
                     <h3 className={`${styles.Titles}`}>Terms and Conditions</h3>
                     <p className={`${styles.para_text} ${styles.center}`}>
                         Please also visit our Terms and Conditions section establishing the use, disclaimers, and limitations of liability governing the use of our website
-                        <Link to='/legal/terms/' className={`${styles.Link}`}> Terms</Link>
+                        <Link to='/terms' className={`${styles.Link}`}> Terms</Link>
                     </p>
                     <h3 className={`${styles.Titles}`}>Your Consent</h3>
                     <p className={`${styles.para_text} ${styles.center}`}>
-                        <p>If we decide to change our privacy policy, we will update the Privacy Policy modification date below.</p><br />
-                        This policy was last modified on Sept 26, 2019
-                    </p><br />
+                    If we decide to change our privacy policy, we will update the Privacy Policy modification date below.<br />
+                       This policy was last modified on Sept 26, 2019
+                    </p>
                 </div>
             </section >
             <Footer />
