@@ -18,7 +18,7 @@ function Header() {
           <div className={classes.right_container}>
             <nav className={classes.nav_links}>
               <Link to="/">Home</Link>
-              <Link to="howitworks">How it Works</Link>
+              <Link to="/howitworks">How it Works</Link>
             </nav>
             <button className={classes.logout_btn}>Log Out</button>
           </div>
