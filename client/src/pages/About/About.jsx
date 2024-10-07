@@ -5,7 +5,8 @@ import styles from "./about.module.css";
 const About = () => {
   return (
     <section className={styles.about_section}>
-      <h2>About</h2>
+    <div className={styles.inner_container}>
+    <h2>About</h2>
       <h1>Evangadi Networks</h1>
       <p>
         No matter what stage of life you are in, whether you’re just starting
@@ -18,6 +19,7 @@ const About = () => {
       </p>
       <button className={styles.how_it_works_btn}>HOW IT WORKS</button>
       {/* <div className={styles.design_shape}></div> */}
+    </div>
     </section>
   );
 };

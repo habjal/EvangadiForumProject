@@ -6,6 +6,7 @@ import AskQuestion from "../pages/Question/AskQuestion/AskQuestion";
 import HowItWorks from "../pages/Howitworks/HowItWorks";
 import Terms from '../components/Footer/Terms'
 import Privacy from '../components/Footer/Privacy'
+import PrivacyPolicy from '../pages/privacy-policy/Privacy-police'
 import QuestionAndAnswer from "../pages/QuestionAndAnswer/QuestionAndAnswer";
 
 import Answer from "../pages/Answer/Answer";
@@ -13,18 +14,16 @@ import AuthLayout from "../pages/AuthLayout/AuthLayout";
 
 function AppRouter() {
     return (
-        <Router>
             <Routes>
                 <Route path="/" element={<Home/>}/>
                 <Route path="/ask" element={<AskQuestion/>}/>
                 <Route path="/question/:questionId" element={<QuestionAndAnswer/>}/>
                 <Route path='/howitworks' element={<HowItWorks/>}/>
                 <Route path="/terms" element={<Terms/>}/>
-                <Route path="/PrivacyPolicy" element={<Answer/>} />
+                <Route path="/PrivacyPolicy" element={<PrivacyPolicy/>} />
                 <Route path="/auth" element={<AuthLayout/>} />
 
             </Routes>
-        </Router>
     
   );
 }

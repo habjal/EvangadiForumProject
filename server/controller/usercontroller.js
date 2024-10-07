@@ -1,9 +1,19 @@
 const dbconnection = require("../config/dbconfig");
 const bcrypt = require("bcrypt");
+const { use } = require("bcrypt/promises");
 const { StatusCodes } = require("http-status-codes");
 const jwt = require("jsonwebtoken");
+const dotenv = require("dotenv");
+dotenv.config();
 async function register(req, res) {
   const { username, firstname, lastname, email, password } = req.body;
+
+  const currentTimestamp = new Date();
+  currentTimestamp.setHours(currentTimestamp.getHours() + 3); // Adjusting for UTC+3
+  const formattedTimestamp = currentTimestamp
+    .toISOString()
+    .slice(0, 19)
+    .replace("T", " ");
 
   // Check if all required fields are provided
   if (!username || !firstname || !lastname || !email || !password) {
@@ -38,8 +48,8 @@ async function register(req, res) {
 
     // Insert new user into the database
     await dbconnection.query(
-      "INSERT INTO users (username, firstname, lastname, email, password) VALUES (?, ?, ?, ?, ?)",
-      [username, firstname, lastname, email, hashedPassword]
+      "INSERT INTO users (username, firstname, lastname, email, password,createdAt) VALUES (?, ?, ?, ?, ?,?)",
+      [username, firstname, lastname, email, hashedPassword, formattedTimestamp]
     );
 
     return res
@@ -55,7 +65,7 @@ async function register(req, res) {
 
 async function login(req, res) {
   const { email, password } = req.body;
-
+  console.log(email, password);
   // Check if email and password are provided
   if (!email || !password) {
     return res
@@ -88,15 +98,16 @@ async function login(req, res) {
     // Generate JWT token
     const username = user[0].username;
     const userid = user[0].userid;
-
-    const token = jwt.sign({ username, userid }, "secret", {
+    const secret = process.env.JWT_SECRET;
+    console.log(username, userid);
+    const token = jwt.sign({ username, userid }, secret, {
       expiresIn: "1d", // Token expires in 1 day
     });
 
     // Return the token and success message
     return res.status(StatusCodes.OK).json({
       msg: "User logged in successfully",
-      token,
+      token: token,
     });
   } catch (error) {
     console.log(error);

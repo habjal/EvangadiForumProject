@@ -1,18 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState ,useContext} from "react";
 import styles from "./questions.module.css";
 import {axiosInstance} from "../../utility/axios";
 import QuestionCard from "../../components/QuestionCard/QuestionCard";
 import Loader from "../../components/Loader/Loder";
-
+import { UserState } from "../../App";
 function Question() {
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(false);
+
+  const { user } = useContext(UserState);
+  const loginUsername = user?.username;
+
   useEffect(() => {
     setLoading(true);
     axiosInstance.get("/questions").then((res) => {
       // console.log(res.data.message)
       setQuestions(res.data.message);
       setLoading(false);
+      console.log(questions);
     });
   }, []);
   
@@ -42,10 +47,10 @@ function Question() {
             <QuestionCard
               key={question.questionid}
               id={question.questionid}
-              userName={"fantahun"}
+              userName={question.username}
               questionTitle={question.title}
               description={question.description}
-              question_date={"Sept 3,2024"}
+              question_date={question.createdAt}
             />
           );
         })

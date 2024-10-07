@@ -36,7 +36,18 @@ function Footer() {
           <li style={{ color: "white", fontWeight: "bold", fontSize: "25px" }}>
             Useful Link
           </li>
-          <li>How it works</li>
+          <li className={classes.term}>
+            <Link
+              to="/howitworks"
+              style={{
+                textDecoration: "none",
+                color: "#959CA4",
+                paddingLeft: "0",
+              }}
+            >
+              How it works
+            </Link>
+          </li>
           <li className={classes.term}>
             <Link
               to="/Terms/"
@@ -51,7 +62,7 @@ function Footer() {
           </li>
           <li className={classes.privacy}>
             <Link
-              to="/PrivacyPolicy/"
+              to="/PrivacyPolicy"
               style={{ textDecoration: "none", color: "#959CA4" }}
             >
               Privacy policy

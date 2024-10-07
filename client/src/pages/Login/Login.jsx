@@ -1,16 +1,18 @@
 import React, { useState } from "react";
-import axios from "axios";
+import {axiosInstance} from "../../utility/axios";
 import classes from "./login.module.css";
-
+import { useNavigate } from "react-router-dom";
 function Login({ onSwitch }) {
+  const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(null);
+  const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
 
-  const [error, setError] = useState(null);
-  const [success, setSuccess] = useState(null);
-  const [showPassword, setShowPassword] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -28,14 +30,16 @@ function Login({ onSwitch }) {
     e.preventDefault();
 
     try {
-      const response = await axios.post(
-        "http://localhost:5173/api/users/Login",
+      const response = await axiosInstance.post(
+        "/user/Login",
         {
           email: formData.email,
-          Password: formData.password,
+          password: formData.password,
         }
       );
-
+      // console.log(response.data)
+      localStorage.setItem("EV-Forum-token-G3-APR2024", response.data.token); // Store the token in local storage
+window.location.href = "/"; // This will navigate to the / page and refresh the application
       if (response.status === 200) {
         setSuccess("Login successful! Redirecting...");
         setError(null);
@@ -45,7 +49,7 @@ function Login({ onSwitch }) {
       }
     } catch (err) {
       setError(
-        err.response?.data?.msg || "Error logging in. Please try again."
+        err.response?.data?.msg || "Error logging in. Please try again."+err
       );
       setSuccess(null);
     }
@@ -53,7 +57,9 @@ function Login({ onSwitch }) {
 
   return (
     <div className={classes.formcontainer}>
-      <h2>Login to your account</h2>
+      <div className={classes.innerContainer}>
+     <div className={classes.heading}>
+     <h2>Login to your account</h2>
       <p className={classes.signuptext}>
         Don't have an account?{" "}
         <a
@@ -70,6 +76,7 @@ function Login({ onSwitch }) {
       )}{" "}
       {/* Display error message */}
       {success && <p className={classes.success}>{success}</p>}
+     </div>
       <form onSubmit={handleSubmit}>
         <input
           type="email"
@@ -88,8 +95,8 @@ function Login({ onSwitch }) {
             onChange={handleChange}
             required
           />
-          <button type="button" onClick={handleTogglePassword}>
-            {showPassword ? "🙉" : "🙈"} {/* Toggle between 🙈 and 🙉 */}
+          <button type="button" onClick={handleTogglePassword} style={{}}>
+            {showPassword ? "🙉" : "🙈"}
           </button>
         </div>
         <p className={classes.forgotpasswordtext}>
@@ -99,6 +106,7 @@ function Login({ onSwitch }) {
           Login
         </button>
       </form>
+      </div>
     </div>
   );
 }

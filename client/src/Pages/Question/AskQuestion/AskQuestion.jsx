@@ -1,38 +1,32 @@
-import React, { useContext, useEffect, useRef } from "react";
+import React, { useContext, useRef } from "react";
 import classes from "./askQuestion.module.css";
-import axios from "../../../axiosConfig";
+import {axiosInstance} from "../../../utility/axios";
 import { Link } from "react-router-dom";
 import Layout from "../../../Layout/Layout";
+import { UserState } from "../../../App";
 // import { StatusCodes } from "http-status-codes";
 // import { useNavigate } from "react-router-dom";
-
 function AskQuestion() {
+  const {user}=useContext(UserState);
+
   // const navigate = useNavigate();
   const titleDom = useRef();
   const descriptionDom = useRef();
-
-  // useEffect(() => {
-  //   const token = localStorage.getItem("token");
-  //   if (!token) {
-  //     navigate("/login");
-  //   }
-  // }, [navigate]);
-  // function handleLogout() {
-  //   localStorage.removeItem("token");
-  //   navigate("/login");
-  // }
-
+  const userId = user?.userid;
+  console.log(user)
   async function handleSubmit(e) {
     e.preventDefault();
     const title = titleDom.current.value;
     const description = descriptionDom.current.value; // Make a POST request to your server to create a new question
-
+const userid=userId;
+const tag="General";
     // Make a POST request to your server to create a new question
-    const response = await axios.post("/api/questions", { title, description });
-
+    const response = await axiosInstance.post("/question", { userid, title, description, tag });
+    
     try {
       if (response.status === 201) {
         console.log("Question created successfully");
+        window.location.href = "/"; // Redirect to the home page and refresh the page
       } else {
         console.error("Failed to create question");
       }
@@ -69,6 +63,7 @@ function AskQuestion() {
                 ref={titleDom}
                 type="text"
                 placeholder="Question title"
+                required
               />
               <textarea
                 rows={4}
@@ -76,6 +71,7 @@ function AskQuestion() {
                 ref={descriptionDom}
                 type="text"
                 placeholder="Question Description..."
+                required
               />
 
               <span>

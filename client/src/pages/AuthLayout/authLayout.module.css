@@ -6,12 +6,13 @@
     background-image: url('../../assets/Images/howitworkbg.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+    overflow: scroll;
 } 
 
 .inner_container{
     display: flex;
     /* justify-content: center; */
-    max-width: 1200px;
+    width: 90%;
     margin: auto;
     align-items: center;
     justify-content: center;
@@ -19,3 +20,35 @@
     gap: 10px;
     /* background-color: black; */
 }
+
+.formContainer {
+    transition: opacity .5s ease-in-out, visibility .5s;
+  }
+  
+  .fadeIn {
+    opacity: 1;
+    visibility: visible;
+    z-index: 1;
+  }
+  
+  .fadeOut {
+    opacity: 0;
+    visibility: hidden;
+    z-index: 0;
+  }
+  
+.form_container,.about{
+    width: 50%;
+    /* background-color: black; */
+}
+
+@media screen and (max-width: 768px) {
+    .inner_container{
+        flex-direction: column;
+    }
+    .about{
+       display: none;
+    }
+    
+}
+  

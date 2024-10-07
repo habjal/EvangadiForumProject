@@ -1,9 +1,8 @@
 .about_section {
     text-align: left;
     padding: 2rem;
-    /* background-color: white; */
     border-radius: 8px;
-    width: 600px
+    width: 100%;
   }
   
   .about_section h2 {

@@ -5,11 +5,16 @@ import Login from "../Login/Login";
 import About from "../../pages/About/About";
 
 export default function AuthLayout() {
-  const [isSignUp, setIsSignUp] = useState(true); // Renamed the setter to match the state
+  const [isLogin, setisLogin] = useState(true); // Renamed the setter to match the state
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   // Function to toggle between SignUp and Login forms
   const toggleForm = () => {
-    setIsSignUp(!isSignUp);
+    setIsTransitioning(true); // Start the transition
+    setTimeout(() => {
+      setisLogin((prev) => !prev); // Change the component after fade-out
+      setIsTransitioning(false); // End the transition after fade-in
+    }, 500); // 500ms matches the CSS transition duration
   };
 
   return (
@@ -17,19 +22,19 @@ export default function AuthLayout() {
       <div className={styles.inner_container}>
         <div
           className={`${styles.formContainer} ${
-            isSignUp ? styles.slideIn : styles.slideOut
+            isTransitioning ? styles.fadeOut : styles.fadeIn
           }`}
         >
-          {isSignUp ? (
-            <SignUp onSwitch={toggleForm} />
+          {isLogin ? (
+          <Login onSwitch={toggleForm} />
           ) : (
-            <Login onSwitch={toggleForm} />
+            <SignUp onSwitch={toggleForm} />
           )}
         </div>
-
+        <div className={styles.about}>
           <About />
-
+        </div>
       </div>
     </div>
   );
-}
+};
