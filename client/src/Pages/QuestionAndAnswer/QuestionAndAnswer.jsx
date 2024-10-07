@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { Link, useParams, useSearchParams } from "react-router-dom";
 import { axiosInstance } from "../../utility/axios";
 import Layout from "../../Layout/Layout";
@@ -6,11 +6,14 @@ import styles from "./answer.module.css";
 import { MdAccountCircle } from "react-icons/md";
 import { FaClipboardQuestion } from "react-icons/fa6";
 import { MdOutlineQuestionAnswer } from "react-icons/md";
-
+import { UserState } from "../../App";
 function QuestionAndAnswer() {
+  const [questionDetails, setQuestionDetails] = useState({});
+  const {user} = useContext(UserState);
+  const userId = user?.userid;
   const { questionId } = useParams(); // Retrieves the `id` from the URL
-  const [questionDetails, setQuestionDetails] = useState(null);
   const [loading, setLoading] = useState(true);
+  const answerInput =useRef();
   // Retrieves the value of 'id' from the query string
   useEffect(() => {
     axiosInstance.get(`/question/${questionId}`).then((res) => {
@@ -19,18 +22,25 @@ function QuestionAndAnswer() {
     });
   }, [questionId]);
 
-  const [newAnswer, setNewAnswer] = useState("");
-
-  const handlePostAnswer = () => {
-    if (newAnswer.trim()) {
-      const newAnswerData = {
-        id: answers.length + 1,
-        username: "newUser", // Replace with logged-in user info if available
-        answer: newAnswer,
-      };
-      setAnswers([...answers, newAnswerData]);
-      setNewAnswer("");
+  async function handlePostAnswer() {
+    const response= await axiosInstance.post("/answer", {
+        userid: userId,
+        answer:answerInput.current.value,
+        questionid:questionId
+      })
+    try {
+      
+    if(response.status ===201){
+      console.log(response.data)
     }
+    else{
+      console.log("something went wrong")
+    }
+    } catch (error) {
+      console.log(error)
+    }
+
+
   };
 
   return (
@@ -59,17 +69,18 @@ function QuestionAndAnswer() {
             />
             Answers From the Community:
           </h2>
-          {questionDetails?.answers.length > 0 ? (
-            questionDetails?.answers.map((answer) => (
-              <div key={answer.answerid} className={styles.answer_holder}>
+          {questionDetails?.answers?.length > 0 ? (
+            questionDetails?.answers?.map((answer) => (
+              <div key={answer?.answerid} className={styles.answer_holder}>
                 <div className={styles.account_holder}>
                   <MdAccountCircle size={40} />
                   <div className={styles.profileName}>{answer?.username}</div>
                 </div>
                 <div>
                   <p className={styles.answerText}>
-                    {answer.answer}
+                    {answer?.answer}
                   </p>
+                  <p className={styles.answer_date}>{answer?.createdAt}</p>
                 </div>
               </div>
             ))
@@ -85,21 +96,23 @@ function QuestionAndAnswer() {
 
           <section className={styles.answerFormSection}>
             <h3 className={styles.answerFormTitle}>Answer The Top Question</h3>
-            <Link to="/question" className={styles.questionPageLink}>
+            <Link to="/" className={styles.questionPageLink}>
               Go to Question page
             </Link>
-            <textarea
+        <form onSubmit={handlePostAnswer}>
+        <textarea
               placeholder="Your Answer..."
               className={styles.answerInput}
-              value={newAnswer}
-              onChange={(e) => setNewAnswer(e.target.value)}
+              required
+              ref={answerInput}
             />
             <button
-              onClick={handlePostAnswer}
               className={styles.postAnswerButton}
+              type="submit"
             >
               Post Your Answer
             </button>
+        </form>
           </section>
         </div>
       </div>

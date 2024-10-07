@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import styles from "./home.module.css";
 import { BsArrowRightSquareFill } from "react-icons/bs";
 import Questions from "../Question/Questions";
 import Layout from "../../Layout/Layout";
 import { Link } from "react-router-dom";
+import { UserState } from "../../App";
 
 function Home() {
-  const userName = "Fantahun";
+  const { user } = useContext(UserState);
+  const userName = user?.username;
+  console.log(userName);
   return (
     <Layout>
       <div className={styles.home_container}>

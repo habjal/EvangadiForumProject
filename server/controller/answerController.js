@@ -29,16 +29,23 @@ async function getAnswer(req, res) {
 // Post Answers for a Question
 async function postAnswer(req, res) {
   const { userid, answer, questionid } = req.body;
+  const currentTimestamp = new Date();
+  currentTimestamp.setHours(currentTimestamp.getHours() + 3); // Adjusting for UTC+3
+  const formattedTimestamp = currentTimestamp
+    .toISOString()
+    .slice(0, 19)
+    .replace("T", " ");
+
   if (!userid || !answer || !questionid) {
    return res
       .status(StatusCodes.BAD_REQUEST)
       .json({ message: "All fields are required" });
   }
-  const answerid = crypto.randomBytes(10).toString("hex");
+  // const answerid = crypto.randomBytes(10).toString("hex");
   try {
     await dbConnection.query(
-      "insert into answers (answerid, userid, answer, questionid) values ( ?, ?, ?, ?)",
-      [answerid, userid, answer, questionid]
+      "insert into answers (userid, answer, questionid,createdAt) values ( ?,?,?,?)",
+      [ userid, answer, questionid,formattedTimestamp]
     );
     return res
       .status(StatusCodes.CREATED)

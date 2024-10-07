@@ -14,7 +14,6 @@ import AuthLayout from "../pages/AuthLayout/AuthLayout";
 
 function AppRouter() {
     return (
-        <Router>
             <Routes>
                 <Route path="/" element={<Home/>}/>
                 <Route path="/ask" element={<AskQuestion/>}/>
@@ -25,7 +24,6 @@ function AppRouter() {
                 <Route path="/auth" element={<AuthLayout/>} />
 
             </Routes>
-        </Router>
     
   );
 }

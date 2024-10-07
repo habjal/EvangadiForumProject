@@ -5,16 +5,23 @@ const crypto = require("crypto");
 // post questions / ask questions
 async function postQuestion(req, res) {
   const { userid, title, description, tag } = req.body;
+  const currentTimestamp = new Date();
+  currentTimestamp.setHours(currentTimestamp.getHours() + 3); // Adjusting for UTC+3
+  const formattedTimestamp = currentTimestamp
+    .toISOString()
+    .slice(0, 19)
+    .replace("T", " ");
+
   if (!userid || !title || !description) {
-  return  res
+    return res
       .status(StatusCodes.BAD_REQUEST)
       .json({ message: "All fields are required" });
   }
   const questionid = crypto.randomBytes(10).toString("hex");
   try {
     await dbConnection.query(
-      "insert into questions (questionid, userid, title, description, tag) values ( ?, ?, ?, ?, ?)",
-      [questionid, userid, title, description, tag]
+      "insert into questions (questionid, userid, title, description, tag,createdAt) values ( ?, ?, ?, ?, ?,?)",
+      [questionid, userid, title, description, tag, formattedTimestamp]
     );
     return res
       .status(StatusCodes.CREATED)
@@ -23,14 +30,15 @@ async function postQuestion(req, res) {
     //    console.log(err);
     return res
       .status(500)
-      .json({ message: "something went wrong, please try again later" +err});
+      .json({ message: "something went wrong, please try again later" + err });
   }
 }
 
 // get all questions
 async function getAllQuestions(req, res) {
   try {
-    const [questions] = await dbConnection.query("select * from questions");
+    const [questions] = await dbConnection.query(`select q.questionid, q.title, q.description, u.username from questions q   
+      join users u on q.userid = u.userid  order by q.createdAt desc`);
     return res.status(StatusCodes.OK).json({
       message: questions,
     });
@@ -54,7 +62,8 @@ async function getQuestionAndAnswer(req, res) {
           q.description, 
           a.answerid, 
           a.userid AS answer_userid, 
-          a.answer
+          a.answer,
+          a.createdAt
        FROM 
           questions q
        LEFT JOIN 
@@ -81,6 +90,7 @@ async function getQuestionAndAnswer(req, res) {
           answerid: answer.answerid,
           userid: answer.answer_userid,
           answer: answer.answer,
+          createdAt: answer.createdAt,
         }))
         .filter((answer) => answer.answerid !== null), // Filter out any null answers
     };
