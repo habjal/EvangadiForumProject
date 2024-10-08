@@ -100,7 +100,7 @@ window.location.href = "/"; // This will navigate to the / page and refresh the 
           </button>
         </div>
         <p className={classes.forgotpasswordtext}>
-          <a href="forgetPass">Forgot password?</a>
+          <a href="/forgetPass">Forgot password?</a>
         </p>
         <button type="submit" className={classes.submitbtn}>
           Login
