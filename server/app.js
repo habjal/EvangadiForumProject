@@ -31,7 +31,7 @@ app.use("/api/v1/user", userRoutes);
 // questions routes middleware file import
 const questionRoutes = require("./routes/questionRoute");
 // questions routes middleware
-app.use("/api/v1",questionRoutes);
+app.use("/api/v1", questionRoutes);
 // answers routes middleware file import
 const answerRoutes = require("./routes/answerRoute");
 

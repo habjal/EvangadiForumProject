@@ -11,9 +11,10 @@ const HowItWorks = () => {
 
 
   return (
-  //  <Layout>
+   <Layout>
      <div className={styles.container}>
-      <h2 className={styles.title}>Purpose of the Platform</h2>
+    <div className={styles.inner_container}>
+    <h2 className={styles.title}>Purpose of the Platform</h2>
       <p className={styles.description}>
         The site’s purpose is to foster collaborative learning among students by
         enabling them to ask questions, answer peers, and review responses. It
@@ -77,7 +78,8 @@ const HowItWorks = () => {
     }
       </div>
     </div>
-  //  </Layout>
+    </div>
+    </Layout>
   );
 };
 

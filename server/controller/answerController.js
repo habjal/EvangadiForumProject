@@ -10,14 +10,15 @@ async function getAnswer(req, res) {
       `SELECT 
             a.answerid, 
             a.userid AS answer_userid, 
-            a.answer
+            a.answer,
+            u.username
          FROM 
-            answers a
+            answers a inner join users u on a.userid = u.userid
          WHERE 
             a.questionid = ?`,
       [questionid]
     );
-    return res.status(StatusCodes.OK).json({});
+    return res.status(StatusCodes.OK).json({rows});
   } catch (err) {
     console.log(err);
     return res
@@ -29,12 +30,17 @@ async function getAnswer(req, res) {
 // Post Answers for a Question
 async function postAnswer(req, res) {
   const { userid, answer, questionid } = req.body;
-  const currentTimestamp = new Date();
-  currentTimestamp.setHours(currentTimestamp.getHours() + 3); // Adjusting for UTC+3
-  const formattedTimestamp = currentTimestamp
-    .toISOString()
-    .slice(0, 19)
-    .replace("T", " ");
+// Create a new date object
+const currentTimestamp = new Date();
+
+// Adjust the time by UTC+3 hours
+const adjustedDate = new Date(currentTimestamp.getTime() + 3 * 60 * 60 * 1000);
+
+// Format the date as 'YYYY-MM-DD HH:mm:ss'
+const formattedTimestamp = adjustedDate
+  .toISOString()
+  .slice(0, 19)
+  .replace("T", " ");
 
   if (!userid || !answer || !questionid) {
    return res

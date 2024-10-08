@@ -72,3 +72,16 @@ hr{
     width: 100%;
     margin: auto;
 }
+
+@media screen and (max-width: 568px) {
+    .home_container{
+        max-width: 90vw;
+    }
+.ask_welcome_holder{
+    flex-direction: column;
+}
+.ask_question{
+    width: 100%;    
+}
+    
+}

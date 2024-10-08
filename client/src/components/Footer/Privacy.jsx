@@ -6,7 +6,8 @@ import Layout from '../../Layout/Layout';
 function Privacy() {
   return (
   <Layout>
-      <div className={Classes.terms}>
+    <div className={Classes.container}>
+    <div className={Classes.terms}>
       <div className={Classes.termsHeader}>
         <h2>Privacy Policy</h2>
       </div>
@@ -213,6 +214,7 @@ function Privacy() {
           This policy was last modified on Sept 26, 2019
         </p>
       </div>
+    </div>
     </div>
   </Layout>
   );

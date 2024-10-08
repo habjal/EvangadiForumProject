@@ -5,9 +5,16 @@ const crypto = require("crypto");
 // post questions / ask questions
 async function postQuestion(req, res) {
   const { userid, title, description, tag } = req.body;
+  // Create a new date object
   const currentTimestamp = new Date();
-  currentTimestamp.setHours(currentTimestamp.getHours() + 3); // Adjusting for UTC+3
-  const formattedTimestamp = currentTimestamp
+
+  // Adjust the time by UTC+3 hours
+  const adjustedDate = new Date(
+    currentTimestamp.getTime() + 3 * 60 * 60 * 1000
+  );
+
+  // Format the date as 'YYYY-MM-DD HH:mm:ss'
+  const formattedTimestamp = adjustedDate
     .toISOString()
     .slice(0, 19)
     .replace("T", " ");
@@ -37,8 +44,9 @@ async function postQuestion(req, res) {
 // get all questions
 async function getAllQuestions(req, res) {
   try {
-    const [questions] = await dbConnection.query(`select q.questionid, q.title, q.description, u.username from questions q   
-      join users u on q.userid = u.userid  order by q.createdAt desc`);
+    const [questions] =
+      await dbConnection.query(`select q.questionid, q.title, q.description,q.createdAt, u.username from questions q   
+     inner join users u on q.userid = u.userid  order by q.createdAt desc`);
     return res.status(StatusCodes.OK).json({
       message: questions,
     });
@@ -63,13 +71,17 @@ async function getQuestionAndAnswer(req, res) {
           a.answerid, 
           a.userid AS answer_userid, 
           a.answer,
-          a.createdAt
+          a.createdAt,
+          u.username as answer_username
        FROM 
-          questions q
+          questions q   
        LEFT JOIN 
           answers a ON q.questionid = a.questionid
+          inner join users u on u.userid=a.userid
        WHERE 
-          q.questionid = ?`,
+          q.questionid = ?
+          order by a.createdAt desc
+          `,
       [questionid]
     );
 
@@ -89,6 +101,7 @@ async function getQuestionAndAnswer(req, res) {
         .map((answer) => ({
           answerid: answer.answerid,
           userid: answer.answer_userid,
+          username: answer.answer_username,
           answer: answer.answer,
           createdAt: answer.createdAt,
         }))

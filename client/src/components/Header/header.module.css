@@ -1,126 +1,70 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-.outer_container {
-  /* position: fixed; */
-  top: 0;
-  width: 100%;
-  background-color: white;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-  padding: 10px 0;
-  margin-left: 0;
-  padding-left: 0;
-  align-items: center;
-  justify-content: space-between;
-}
-
 .header_container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 85%;
+  padding: 10px 10px !important;
   margin: auto;
-  padding: 0 20px;
-}
+  width: 83% !important;
+  padding-right: 0 !important;
 
-.logo_container img {
-  width: auto;
 }
-
-.right_container {
-  display: flex;
-  align-items: center;
-  /* padding-right: 200px; */
-}
-
-.left_container {
-  /* padding-left: 200px; */
-}
-
-.nav_links a {
+.navigation_links{
+  font-size: 18px;
+  color: var(--blue-shade);
+  padding: 10px;
+  font-weight: 500;
+  margin-left: 10px;
   text-decoration: none;
-  color: black;
-  margin-right: 20px;
-  font-size: 16px;
+
 }
 
-.nav_links a:hover {
-  color: #ffa500;
+
+.navigation_links:hover{
+  color:var(--primary-color);
+  text-decoration: none;
 }
 
-.logout_btn {
-  background-color: #5078ff;
-  color: white;
+.logout_btn{
+  background-color: var(--blue-shade);
+  color: #fff !important;
   border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
+  border-radius: 4px;
+  padding: 10px 30px;
+  margin-left: 15px;
+}
+.login_btn{
+  padding:10px 20px !important;
+}
+.login_btn:hover{
+  background-color: var(--blue-main) !important;
+  color:#fff !important;
+}
+ .logout_btn:hover {
+  background-color: var(--primary-color) !important; 
+  color:#fff !important;
+} 
+
+.px-5{
+  padding-right: 0 !important;
 }
 
-.logout_btn:hover {
-  background-color: #325dc0;
-}
-
-
-
-/* For small tablet and large mobile screens (up to 768px) */
 @media (max-width: 768px) {
-  .header_container {
-    padding: 0 10px;
-  }
-
-  .logo_container img {
-    max-width: 150px; /* Resize the logo for smaller screens */
-  }
-
-  .nav_links {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .nav_links a {
-    font-size: 14px;
-    margin-bottom: 8px;
-  }
-
   .logout_btn {
-    padding: 8px 16px;
-    font-size: 14px;
+    width: 100%;
+    margin-left: 0;
+    text-align: center;
+    background-color: transparent;
+    color: var(--blue-main) !important;
   }
+    .navigation_links{
+      /* color: blue; */
+      text-align: center;
+      padding: 10px 0 !important;
+    }
+    .navigation_links:hover{
+      /* color: var(--blue-main); */
+      text-decoration: none;
+      text-align: center;
+    }
+
 }
-
-/* For small mobile screens (up to 576px) */
-@media (max-width: 576px) {
-  .right_container {
-    padding: 0;
-  }
-
-  .left_container {
-    padding: 0;
-  }
-
-  .header_container {
-    flex-direction: column;
-    padding: 10px;
-  }
-
-  .logo_container img {
-    max-width: 120px; /* Further resize the logo for smaller screens */
-  }
-
-  .nav_links a {
-    font-size: 12px;
-  }
-
-  .logout_btn {
-    font-size: 12px;
-    padding: 6px 12px;
-  }
-}
-
-

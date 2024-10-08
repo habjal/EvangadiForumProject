@@ -1,148 +1,122 @@
-.container {
-    padding: 20px;
-    max-width: auto;
-    /* margin: 10px auto; */
-    background-image: url('../../Assets/Images/howitworkbg.jpg');
-    background-size: cover;
-    background-position: center;
+/* HowItWorks.module.css */
+.container{
+    width: 100%;
+    height: auto;
+    background: url('../../Assets/Images/blueRedBG.jpg');
     background-repeat: no-repeat;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    color: #333;
-
+    background-size: cover;
 }
-
-.title {
+.inner_container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 0;
+  }
+  
+  .title {
+    font-size: 2rem;
     text-align: center;
-    font-size: 2.5rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: black;
+  }
+  
+  .description {
+    font-size: 1rem;
+    line-height: 1.6;
+    text-align: justify;
     margin-bottom: 30px;
-    font-family: 'Poppins', sans-serif;
-    letter-spacing: 1.5px;
-}
-
-.description {
-    text-align: center;
-    font-size: 1.3rem;
-    margin-bottom: 50px;
-    font-family: 'Roboto', sans-serif;
-}
-
-.steps {
+    padding: 0 20px;
+  }
+  
+  /* Step container */
+  .steps {
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 20px;
 }
 
 .step {
+      border: 2px solid var(--blue-shade);
     background-color: #f9f9f9;
-    /* Softer light gray tone */
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(117, 68, 68, 0.26);
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.step:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-}
-
-.step h3 {
-    font-size: 1.8rem;
-    color: #333;
-    margin-bottom: 15px;
-    font-family: 'Montserrat', sans-serif;
-    position: relative;
-}
-
-.step h3::after {
-    content: '';
-    width: 70px;
-    height: 3px;
-    background-color: #bd1414;
-    position: absolute;
-    bottom: -10px;
-    left: 0;
-}
-
-.step p {
-    font-size: 1.1rem;
-    color: #666;
-    line-height: 1.6;
-}
-
-
-.parentContainer {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    align-items: center;
-    height: 100vh;
-    /* margin: 0; */
-    padding: auto;
-}
-
-
-.buttonContainer {
-    align-items: center;
-    gap: 10px;
-    padding: 40px;
-    margin-top: auto;
-    text-align: center;
-}
-
-.signupButton {
-    background-color: #4285f4;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    margin-right: 10px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-    
-}
-
-.signupButton:hover {
-    background-color: #357ae8;
-}
-
-/* Link styling */
-.login {
-    color: #4285f4;
-    font-size: 14px;
-    text-decoration: none;
-    transition: text-decoration 0.3s ease;
-    margin-left: 10px;
-}
-
-.login:hover {
-    text-decoration: underline;
-}
-
-
-
-@media (min-width: 600px) {
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .step h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    font-weight: 600 !important;
+    padding: 10px 0;
+  }
+  
+  .step p {
+    font-size: 1rem;
+    line-height: 2;
+  }
+  
+  /* Responsive styling */
+  @media (min-width: 768px) {
     .steps {
-        flex-direction: row;
-        justify-content: space-between;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
     }
-
+  
     .step {
-        flex: 1;
-        margin: 0 15px;
+      flex: 1 1 calc(50% - 20px);
     }
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
+  }
+  
+  @media (min-width: 992px) {
+    .step {
+      flex: 1 1 calc(33.33% - 20px);
     }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
+  }
+  
+  .buttonContainer {
+    text-align: center;
+    margin-top: 40px;
+  }
+  
+  .signupButton {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin: 15px;
+  }
+  
+  .signupButton:hover {
+    background-color: #0056b3;
+  }
+  
+  .login {
+    color: #007bff;
+    text-decoration: none;
+    margin-left: 5px;
+  }
+  
+  .login:hover {
+    text-decoration: underline;
+  }
+  
+  /* Additional responsive styles */
+  @media (max-width: 576px) {
+    .title {
+      font-size: 1.75rem;
     }
-}
+  
+    .description,
+    .step p {
+      font-size: 0.9rem;
+    }
+  
+    .signupButton {
+      width: 100%;
+    }
+  }
+  
