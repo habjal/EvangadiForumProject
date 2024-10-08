@@ -28,8 +28,7 @@ const HowItWorks = () => {
           <h3>User Authentication</h3>
           <p>
             Students begin by creating an account to access all features of the
-            platform. This allows them to manage their profile, track their
-            activity, and receive notifications.
+            platform. This allows them to access different questions and answers. they can ask question and also collaborate for other questions by answering them.
           </p>
         </div>
 
@@ -60,7 +59,7 @@ const HowItWorks = () => {
     {
       userId ? (
        <>
-        <Link to={"/"}>Go to Home page</Link>
+        {null}
        </>):(
        
       <div className={styles.buttonContainer}>

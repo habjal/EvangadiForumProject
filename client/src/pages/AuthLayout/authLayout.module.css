@@ -6,7 +6,11 @@
   align-items: center;
   min-height: 100vh;
   padding: 20px;
-  /* background-color: #f0f2f5; */
+  background:url("../../Assets/Images/blueRedBG.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 .inner_container {
@@ -16,16 +20,15 @@
   justify-content: center;
   width: 100%;
   /* max-width: 80% !important; */
-  background: #ffffff;
+  /* background: #ffffff; */
   padding: 30px;
   border-radius: 8px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Form container with fade-in and fade-out effects */
 .formContainer {
   width: 100%;
-  transition: opacity 0.3s ease-in-out;
+  transition: opacity .5s ease-in-out;
 }
 
 .fadeIn {
@@ -33,7 +36,7 @@
 }
 
 .fadeOut {
-  opacity: 0;
+  opacity: 0.2;
 }
 
 /* About section styling */

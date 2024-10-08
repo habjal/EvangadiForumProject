@@ -4,7 +4,7 @@ import Footer from '../components/Footer/Footer'
 
 function Layout({children}) {
   return (
-    <div style={{background:"url(/../../Assets/Images/blueRedBG.jpg"}}>
+    <div>
       <Header/>
       <div style={{minHeight:"100vh !important"}}>
       {children}

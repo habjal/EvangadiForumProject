@@ -1,18 +1,15 @@
-* {
-  box-shadow: none !important;
-}
 .formcontainer {
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto;
   padding: 20px 30px;
-  border: 1px solid #ccc;
+  /* border: 1px solid #ccc; */
   border-radius: 10px;
   background-color: white;
   min-height: 500px !important;
-
   max-width: 500px !important;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
 .heading{
   padding: 20px 30px;
@@ -125,6 +122,7 @@ a:hover {
   .innerContainer{
     width: 90%;
     text-align: center;
+    border: none;
   }
 
     .heading h2{

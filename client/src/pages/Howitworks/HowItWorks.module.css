@@ -5,6 +5,7 @@
     background: url('../../Assets/Images/blueRedBG.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
 }
 .inner_container {
     max-width: 1200px;

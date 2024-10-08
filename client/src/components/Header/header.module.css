@@ -18,13 +18,21 @@
 
 }
 
-
 .navigation_links:hover{
   color:var(--primary-color);
   text-decoration: none;
 }
 
-.logout_btn{
+.login_btn{
+  padding:10px 20px !important;
+}
+
+.login_btn:hover{
+  background-color: var(--blue-main) !important;
+  color:#fff !important;
+}
+
+.logout_btn, .login_btn {
   background-color: var(--blue-shade);
   color: #fff !important;
   border: none;
@@ -32,14 +40,8 @@
   padding: 10px 30px;
   margin-left: 15px;
 }
-.login_btn{
-  padding:10px 20px !important;
-}
-.login_btn:hover{
-  background-color: var(--blue-main) !important;
-  color:#fff !important;
-}
- .logout_btn:hover {
+
+ .logout_btn:hover{
   background-color: var(--primary-color) !important; 
   color:#fff !important;
 } 
