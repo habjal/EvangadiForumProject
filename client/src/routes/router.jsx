@@ -11,6 +11,7 @@ import QuestionAndAnswer from "../pages/QuestionAndAnswer/QuestionAndAnswer";
 import Answer from "../pages/Answer/Answer";
 import AuthLayout from "../pages/AuthLayout/AuthLayout";
 import PageNotFound from "../pages/PageNotFound/PageNotFound";
+import ForgotPassword from "../pages/ForgotPassword/ForgotPassword";
 function AppRouter() {
     return (
             <Routes>
@@ -21,6 +22,7 @@ function AppRouter() {
                 <Route path="/terms" element={<Terms/>}/>
                 <Route path="/PrivacyPolicy" element={<PrivacyPolicy/>} />
                 <Route path="/auth" element={<AuthLayout/>} />
+                <Route path="/forgetPass" element={<ForgotPassword/>} />
                 <Route path="*" element={<PageNotFound/>} />
 
 

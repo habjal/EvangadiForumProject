@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import {axiosInstance} from "../../utility/axios";
 import classes from "./login.module.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 function Login({ onSwitch }) {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
@@ -100,7 +100,7 @@ window.location.href = "/"; // This will navigate to the / page and refresh the 
           </button>
         </div>
         <p className={classes.forgotpasswordtext}>
-          <a href="/forgetPass">Forgot password?</a>
+          <Link to="/forgetPass">Forgot password?</Link>
         </p>
         <button type="submit" className={classes.submitbtn}>
           Login
