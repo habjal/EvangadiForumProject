@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {axiosInstance} from "../../utility/axios";
 import classes from "./login.module.css";
 import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 function Login({ onSwitch }) {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
@@ -41,16 +42,34 @@ function Login({ onSwitch }) {
       localStorage.setItem("EV-Forum-token-G3-APR2024", response.data.token); // Store the token in local storage
 window.location.href = "/"; // This will navigate to the / page and refresh the application
       if (response.status === 200) {
-        setSuccess("Login successful! Redirecting...");
+        setSuccess("Login successful! Redirecting..."); 
+        await Swal.fire({
+          title: "Success!",
+          text: "User registered successfully!",
+          icon: "success",
+          confirmButtonText: "OK"
+        })
         setError(null);
       } else {
         setError(response.data.msg || "Login failed.");
+        await Swal.fire({
+          title: "Error",
+          text: response.data.msg || "Error submitting the form. Please try again",
+          icon: "error",
+          confirmButtonText: "OK"
+        });
         setSuccess(null);
       }
     } catch (err) {
       setError(
         err.response?.data?.msg || "Error logging in. Please try again."+err
       );
+      await Swal.fire({
+        title: "Error",
+        text: err.response?.data?.msg || "Error submitting the form. Please try again",
+        icon: "error",
+        confirmButtonText: "OK"
+      });
       setSuccess(null);
     }
   };

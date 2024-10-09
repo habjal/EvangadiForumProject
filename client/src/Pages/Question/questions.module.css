@@ -17,9 +17,8 @@
     padding: 10px 20px;
     outline: none;
     /* transition: border ease-in-out .3s; */
-    border: 1.5px solid var(--blue-shade);
+    border: 1.5px solid var(--blue-shade) !important;
     font-size: 18px;
-
 }
 
 .search_question input:focus{

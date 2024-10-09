@@ -70,7 +70,7 @@ async function login(req, res) {
   if (!email || !password) {
     return res
       .status(StatusCodes.BAD_REQUEST)
-      .json({ Msg: "Please provide the email and password." });
+      .json({ Msg: "Your email or password is incorrect. Please check your details and try again." }); 
   }
 
   try {
@@ -83,7 +83,7 @@ async function login(req, res) {
     // Check if user exists
     if (user.length === 0) {
       return res.status(StatusCodes.NOT_FOUND).json({
-        msg: "User not found",
+        msg: "Your email or password is incorrect. Please check your details and try again.", // user not found but we dont want to tell this to the users directly 
       });
     }
 
@@ -91,7 +91,7 @@ async function login(req, res) {
     const isMatch = await bcrypt.compare(password, user[0].password);
     if (!isMatch) {
       return res.status(StatusCodes.BAD_REQUEST).json({
-        msg: "Please enter the correct password",
+        msg: "Your email or password is incorrect. Please check your details and try again.", // password is wrong but we dont want to specify that clearly here
       });
     }
 

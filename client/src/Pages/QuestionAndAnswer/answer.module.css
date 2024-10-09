@@ -21,34 +21,54 @@ padding: 30px 0;
 
 .questionDescription{
   /* margin-left: 40px; */
-  font-size: 18px;
+  font-size: 20px;
   line-height: 1.6;
   padding: 2px 0;
   padding-left: 10px; /* Add space between the border and the paragraph */
   border-left: 2px solid var(--blue-shade);
+  color: black;
 }
 
 .answer_holder{
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding: 10px 20px;
+  padding: 15px 20px;
   border: 1.5px solid var(--blue-shade);
   margin-bottom: 10px;
   border-radius: 5px;
   gap: 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+
 }
 
-.answer_holder:hover{
+
+/* .answer_holder:hover{
 background-color: var(--blue-shade);
 color: white;
 cursor: pointer;
 transition: all ease-in-out .5s;
+} */
+
+.answerText {
+  flex-grow: 1;
+  font-size: 18px;
+  color: black;
 }
 
-.answer_holder:hover p{
-  color: white;
+.answer_date{
+  font-size: 14px;
+  text-align: left;
+  color: #555 !important;
+  margin-bottom: 0;
 }
+
+/* .answer_holder:hover {
+  color: white !important;
+  transition: all ease-in-out .5s;
+  transform: scale(1.01);
+  background-color: var(--blue-shade);
+} */
 
 /* Answer Section Styles */
 .answerSection {
@@ -86,10 +106,6 @@ transition: all ease-in-out .5s;
 }
 
 
-.answerText {
-  flex-grow: 1;
-  font-size: 16px;
-}
 
 /* Answer Form Styles */
 .answerFormSection {
@@ -107,7 +123,7 @@ transition: all ease-in-out .5s;
   display: block;
   margin-bottom: 16px;
   text-decoration: none;
-  color: #007bff;
+  color: var(--blue-shade);
   font-weight: bold;
   text-align: center;
 }
@@ -122,11 +138,12 @@ transition: all ease-in-out .5s;
   outline: none;
   border: 1.5px solid var(--blue-shade);
   font-size: 16px;
+  color: #333 !important;
 
 }
 
 .answerInput:focus{
-  border: 1.5px solid var(--primary-color);
+  border: 1.5px solid var(--primary-color) !important;
   outline: none;
   transition: all ease-in-out .3s;
   color: orange;

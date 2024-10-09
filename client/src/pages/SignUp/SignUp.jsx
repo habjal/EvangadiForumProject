@@ -4,6 +4,7 @@ import classes from "./signUp.module.css";
 import Login from "../Login/Login";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import {axiosInstance} from "../../utility/axios";
+import Swal from "sweetalert2";
 
 function Signup({ onSwitch }) {
   const navigate = useNavigate();
@@ -40,17 +41,17 @@ function Signup({ onSwitch }) {
         {
           // Sending user registration data
           username: formData.username,
-          firstname: formData.firstName, //Make sure to match the backend field names
+          firstname: formData.firstName, 
           lastname: formData.lastName,
           email: formData.email,
-          password: formData.password, // Ensure this matches the backend property name
+          password: formData.password
         }
       );
-      setSuccess("success"); // Handle sccess response
+      setSuccess("success"); 
       // navigate("/auth");
-      window.location.href = "/auth"; // This will navigate to the /auth page and refresh the application
+      // window.location.href = "/auth"; // This will navigate to the /auth page and refresh the application
 
-      if (response.status === 200) {
+      if (response.status === 201) {
 
         setFormData({
           username: "",
@@ -60,15 +61,34 @@ function Signup({ onSwitch }) {
           password: "",
         })
         setError(null); // clear any previous errors
+        await Swal.fire({
+          title: "Success!",
+          text: "User registered successfully!",
+          icon: "success",
+          confirmButtonText: "OK"
+        }).then(() => {
+          window.location.reload();
+        });
       } else {
         setError(response.data.Msg); // Handle error response
+        await Swal.fire({
+          title: "Error",
+          text: error || "Error submitting the form. Please try again.",
+          icon: "error",
+          confirmButtonText: "OK"
+        });
         setSuccess(null); // clear any previous success message
       }
     } catch (err) {
       setError(
         err.response?.data?.Msg ||
-          "Error submitting the form. Please try again." + err
-      ); // Enhanced error handling
+          "Error submitting the form. Please try again." + err)
+          await Swal.fire({
+            title: "Error",
+            text: err.response?.data?.Msg || "Error submitting the form. Please try again.",
+            icon: "error",
+            confirmButtonText: "OK"
+          });
       setSuccess(null); // clear any previous success message
     }
   };

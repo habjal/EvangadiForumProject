@@ -46,14 +46,15 @@ a{
     width: 100%;
     justify-content: space-between;
     align-items: center;
-    padding: 12px 20px;
+    padding: 15px 20px;
     border-radius: 10px;
     border:2px solid var(--blue-main);
-    font-size: 14px;
+    font-size: 16px;
     text-transform: uppercase;
     letter-spacing: 1px;
     font-weight: bold;
     color: var(--blue-main);
+    background-color: white;
 }
 
 .ask_btn:hover{

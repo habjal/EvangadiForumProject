@@ -6,7 +6,12 @@ import styles from "./answer.module.css";
 import { MdAccountCircle } from "react-icons/md";
 import { FaClipboardQuestion } from "react-icons/fa6";
 import { MdOutlineQuestionAnswer } from "react-icons/md";
+import moment from "moment";
 import { UserState } from "../../App";
+import { LuCalendarClock } from "react-icons/lu";
+import Swal from "sweetalert2";
+
+
 function QuestionAndAnswer() {
   const [questionDetails, setQuestionDetails] = useState({});
   const { user } = useContext(UserState);
@@ -22,7 +27,8 @@ function QuestionAndAnswer() {
     });
   }, [questionId]);
 
-  async function handlePostAnswer() {
+  async function handlePostAnswer(e) {
+    e.preventDefault();
     const response = await axiosInstance.post("/answer", {
       userid: userId,
       answer: answerInput.current.value,
@@ -30,12 +36,32 @@ function QuestionAndAnswer() {
     });
     try {
       if (response.status === 201) {
-        console.log(response.data);
+        console.log("Question created successfully");
+        await Swal.fire({
+          title: "Success!",
+          text: "Answer submitted successfully!",
+          icon: "success",
+          confirmButtonText: "OK"
+        }).then(() => {
+          window.location.reload();
+        });
       } else {
-        console.log("something went wrong");
+        console.error("Failed to post answer");
+      await Swal.fire({
+        title: "Error",
+        text: "Failed to post answer",
+        icon: "error",
+        confirmButtonText: "OK"
+      });
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
+    await Swal.fire({
+      title: "Error",
+      text: "Failed to post answer. Please try again later.",
+      icon: "error",
+      confirmButtonText: "OK"
+    });
     }
   }
 
@@ -52,6 +78,11 @@ function QuestionAndAnswer() {
               <p className={styles.questionDescription}>
                 {questionDetails?.description}
               </p>
+              <p className={styles.question_date}>
+                <LuCalendarClock style={{marginRight:"5px"}} size={19}/>
+              {moment(questionDetails.qtn_createdAt).format('ddd, MMM DD, YYYY h:mm A').toUpperCase()}
+              </p>
+
             </div>
           </div>
 
@@ -66,15 +97,17 @@ function QuestionAndAnswer() {
             Answers From the Community:
           </h2>
           {questionDetails?.answers?.length > 0 ? (
-            questionDetails?.answers?.map((answer) => (
+            questionDetails?.answers?.map((answer) => ( 
               <div key={answer?.answerid} className={styles.answer_holder}>
                 <div className={styles.account_holder}>
-                  <MdAccountCircle size={40} />
-                  <div className={styles.profileName}>{answer?.username}</div>
+                  <MdAccountCircle size={50} />
+                  <div className={styles.profileName}>@{answer?.username}</div>
                 </div>
                 <div>
                   <p className={styles.answerText}>{answer?.answer}</p>
-                  <p className={styles.answer_date}>{answer?.createdAt}</p>
+                  <p className={styles.answer_date}>
+                  <LuCalendarClock style={{marginRight:"5px"}} size={19}/>
+                    {moment(answer?.createdAt).format('ddd, MMM DD, YYYY h:mm A').toUpperCase()}</p>
                 </div>
               </div>
             ))
