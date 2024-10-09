@@ -10,11 +10,14 @@
 
 .question_holder:hover{
  background-color: var(--blue-shade);
- color: white;
+ color: white !important;
  cursor: pointer;
  transition: all ease-in-out .5s;
 }
 
+.question_holder:hover p{
+    color: white;
+}
 .requester_holder{
     width: 100px;
     padding: 10px;

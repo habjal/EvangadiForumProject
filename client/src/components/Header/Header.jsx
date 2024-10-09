@@ -24,7 +24,6 @@ function Header() {
           <Navbar.Brand href="/">
             <img
               src={EvangadiLogo}
-              width="100"
               className="d-inline-block align-top"
               alt="Evangadi Logo"
               width="200"

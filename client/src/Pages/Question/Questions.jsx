@@ -2,7 +2,7 @@ import React, { useEffect, useState ,useContext} from "react";
 import styles from "./questions.module.css";
 import {axiosInstance} from "../../utility/axios";
 import QuestionCard from "../../components/QuestionCard/QuestionCard";
-import Loader from "../../components/Loader/Loder";
+import Loader from "../../components/Loader/Loader";
 import { UserState } from "../../App";
 function Question() {
   const [questions, setQuestions] = useState([]);

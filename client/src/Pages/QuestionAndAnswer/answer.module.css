@@ -45,6 +45,9 @@ cursor: pointer;
 transition: all ease-in-out .5s;
 }
 
+.answer_holder:hover p{
+  color: white;
+}
 
 /* Answer Section Styles */
 .answerSection {
