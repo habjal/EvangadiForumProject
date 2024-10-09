@@ -16,6 +16,7 @@ padding: 30px 0;
 .questionTitle{
   font-weight: 700;
   font-size: 30px;
+  color: black !important;
 }
 
 .questionDescription{
