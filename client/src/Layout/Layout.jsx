@@ -4,11 +4,13 @@ import Footer from '../components/Footer/Footer'
 
 function Layout({children}) {
   return (
-    <>
+    <div>
       <Header/>
+      <div style={{minHeight:"100vh !important"}}>
       {children}
+      </div>
       <Footer/>
-    </>
+    </div>
   )
 }
 

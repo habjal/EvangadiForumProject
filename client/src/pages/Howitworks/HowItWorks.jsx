@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./HowItWorks.module.css";
 import Layout from "../../Layout/Layout";
+import { UserState } from "../../App";
+import Header from "../../components/Header/Header";
 
 const HowItWorks = () => {
+  const {user}=useContext(UserState);
+  const userId = user?.userid;
+
+
   return (
    <Layout>
      <div className={styles.container}>
-      <h2 className={styles.title}>Purpose of the Platform</h2>
+    <div className={styles.inner_container}>
+    <h2 className={styles.title}>Purpose of the Platform</h2>
       <p className={styles.description}>
         The site’s purpose is to foster collaborative learning among students by
         enabling them to ask questions, answer peers, and review responses. It
@@ -21,8 +28,7 @@ const HowItWorks = () => {
           <h3>User Authentication</h3>
           <p>
             Students begin by creating an account to access all features of the
-            platform. This allows them to manage their profile, track their
-            activity, and receive notifications.
+            platform. This allows them to access different questions and answers. they can ask question and also collaborate for other questions by answering them.
           </p>
         </div>
 
@@ -49,20 +55,30 @@ const HowItWorks = () => {
       </div>
 
       <div className="parentContainer">
-        <div className={styles.buttonContainer}>
-          <Link to={"/signup"}>
+        
+    {
+      userId ? (
+       <>
+        {null}
+       </>):(
+       
+      <div className={styles.buttonContainer}>
+          <Link to={"/auth"}>
             <button className={styles.signupButton}>Join us Sign Up Now</button>
           </Link>
           <span>
             Already have an account?
-            <Link to="/login" className={styles.login}>
+            <Link to="/auth" className={styles.login}>
               Login
             </Link>
           </span>
-        </div>
+        </div> 
+    )
+    }
       </div>
     </div>
-   </Layout>
+    </div>
+    </Layout>
   );
 };
 

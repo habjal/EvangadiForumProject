@@ -6,7 +6,8 @@ import Layout from "../../Layout/Layout";
 function Terms() {
   return (
    <Layout>
-     <div className={Classes.terms}>
+  <div className={Classes.container}>
+  <div className={Classes.terms}>
       <div className={Classes.termsHeader}>
         <h2>Terms and Conditions</h2>
       </div>
@@ -205,7 +206,7 @@ function Terms() {
           AND FITNESS FOR A PARTICULAR PURPOSE.
         </p>
         <h5>Copyright, DMCA and takedowns</h5>
-        <p>
+        <div>
           We will respond to legitimate requests under the Digital Millennium
           Copyright Act ("DMCA"), and we retain the right to remove user and
           curated content on evangadi.com that we deem to be infringing the
@@ -276,7 +277,7 @@ function Terms() {
               such person.
             </li>
           </ol>
-        </p>
+        </div>
         <h5>Disclaimers</h5>
         <p>
           THE SITE, SERVICES, EVANGADI.COM CONTENT, THIRD PARTY MATERIALS AND
@@ -352,6 +353,7 @@ function Terms() {
         </p>
       </div>
     </div>
+  </div>
    </Layout>
   );
 }

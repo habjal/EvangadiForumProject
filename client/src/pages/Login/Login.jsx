@@ -59,7 +59,7 @@ window.location.href = "/"; // This will navigate to the / page and refresh the 
     <div className={classes.formcontainer}>
       <div className={classes.innerContainer}>
      <div className={classes.heading}>
-     <h2>Login to your account</h2>
+     <h2 className={classes.title}>Login to your account</h2>
       <p className={classes.signuptext}>
         Don't have an account?{" "}
         <a

@@ -32,10 +32,10 @@ function Footer() {
         </div>
       </div>
       <div className={classes.footer_links}>
+                 <h4 style={{ color: "white", fontWeight: "bold", fontSize: "20px" }}>
+                 Useful Links
+          </h4>
         <ul className={classes.footer_ul}>
-          <li style={{ color: "white", fontWeight: "bold", fontSize: "25px" }}>
-            Useful Link
-          </li>
           <li className={classes.term}>
             <Link
               to="/howitworks"
@@ -71,10 +71,10 @@ function Footer() {
         </ul>
       </div>
       <div className={classes.footer_contacts}>
-        <ul>
-          <li style={{ color: "white", fontWeight: "bold", fontSize: "25px" }}>
+          <h4 style={{ color: "white", fontWeight: "bold", fontSize: "20px" }}>
             Contact Info
-          </li>
+          </h4>
+          <ul className={classes.footer_ul}>
           <li>Evangadi Networks</li>
           <li>support@evangadi.com</li>
           <li>+1-202-386-2702</li>
