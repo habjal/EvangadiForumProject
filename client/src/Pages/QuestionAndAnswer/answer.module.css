@@ -166,7 +166,7 @@ transition: all ease-in-out .5s;
   background-color: var(--blue-main);
 }
 .answerTextContainer {
-  cursor: pointer;
+  /* cursor: pointer; */
   padding: 10px;
   border-radius: 5px;
   margin-bottom: 15px;

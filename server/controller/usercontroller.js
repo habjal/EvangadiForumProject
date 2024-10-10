@@ -64,26 +64,26 @@ async function register(req, res) {
 }
 
 async function login(req, res) {
-  const { email, password } = req.body;
+  const { usernameOrEmail, password } = req.body;
   // console.log(email, password);
   // Check if email and password are provided
-  if (!email || !password) {
+  if (!usernameOrEmail || !password) {
     return res
       .status(StatusCodes.BAD_REQUEST)
       .json({ Msg: "Your email or password is incorrect. Please check your details and try again." }); 
   }
 
   try {
-    // Query the user by email
+    // Query the user by email or username
     const [user] = await dbconnection.query(
-      "SELECT username, userid, password FROM users WHERE email = ?",
-      [email]
+      "SELECT username, userid, password FROM users WHERE email = ? OR username = ?",
+  [usernameOrEmail, usernameOrEmail]
     );
 
     // Check if user exists
     if (user.length === 0) {
       return res.status(StatusCodes.NOT_FOUND).json({
-        msg: "Your email or password is incorrect. Please check your details and try again.", // user not found but we dont want to tell this to the users directly 
+        msg: "Invalid credentials. Please check your details and try again.", // user not found but we dont want to tell this to the users directly 
       });
     }
 
@@ -91,7 +91,7 @@ async function login(req, res) {
     const isMatch = await bcrypt.compare(password, user[0].password);
     if (!isMatch) {
       return res.status(StatusCodes.BAD_REQUEST).json({
-        msg: "Your email or password is incorrect. Please check your details and try again.", // password is wrong but we dont want to specify that clearly here
+        msg: "Invalid credentials. Please check your details and try again.", // password is wrong but we dont want to specify that clearly here
       });
     }
 

@@ -10,7 +10,7 @@ function Login({ onSwitch }) {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    email: "",
+    usernameOrEmail: "",
     password: "",
   });
 
@@ -34,18 +34,18 @@ function Login({ onSwitch }) {
       const response = await axiosInstance.post(
         "/user/Login",
         {
-          email: formData.email,
+          usernameOrEmail: formData.usernameOrEmail,
           password: formData.password,
         }
       );
       // console.log(response.data)
       localStorage.setItem("EV-Forum-token-G3-APR2024", response.data.token); // Store the token in local storage
-window.location.href = "/"; // This will navigate to the / page and refresh the application
+      window.location.href = "/"; // This will navigate to the / page and refresh the application
       if (response.status === 200) {
         setSuccess("Login successful! Redirecting..."); 
         await Swal.fire({
           title: "Success!",
-          text: "User registered successfully!",
+          text: "User Loggedin successfully!",
           icon: "success",
           confirmButtonText: "OK"
         })
@@ -98,10 +98,10 @@ window.location.href = "/"; // This will navigate to the / page and refresh the 
      </div>
       <form onSubmit={handleSubmit}>
         <input
-          type="email"
-          name="email"
-          placeholder="Email address"
-          value={formData.email}
+          type="text"
+          name="usernameOrEmail"
+          placeholder="User name or Email"
+          value={formData.usernameOrEmail}
           onChange={handleChange}
           required
         />

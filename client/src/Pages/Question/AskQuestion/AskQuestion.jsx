@@ -20,7 +20,7 @@ function AskQuestion() {
   async function handleSubmit(e) {
     e.preventDefault();
     const title = titleDom.current.value;
-    const description = descriptionDom.current.value; // Make a POST request to your server to create a new question
+    const description = descriptionDom.current.value; 
     const userid = userId;
     const tag = "General";
 

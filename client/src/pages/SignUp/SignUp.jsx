@@ -3,7 +3,7 @@ import axios from "axios";
 import classes from "./signUp.module.css";
 import Login from "../Login/Login";
 import { Link, Navigate, useNavigate } from "react-router-dom";
-import {axiosInstance} from "../../utility/axios";
+import { axiosInstance } from "../../utility/axios";
 import Swal from "sweetalert2";
 
 function Signup({ onSwitch }) {
@@ -31,85 +31,191 @@ function Signup({ onSwitch }) {
     setShowPassword((prev) => !prev); // Toggle the visibility state
   };
 
+  // validate the form data for names
+  function validateUserData(fname, lname, username) {
+    // Check if first and last names contain only letters and are at least two characters long
+    const isValidFname = /^[A-Za-z]{2,}$/.test(fname.trim());
+    const isValidLname = /^[A-Za-z]{2,}$/.test(lname.trim());
+
+    // Check if username is more than two characters and holds only letters and numbers
+    const isValidUserName = /^[A-Za-z0-9]+$/.test(username.trim());
+    const isValidUsernameLength = username.trim().length > 1;
+
+    // Return true only if all conditions are met, after that we will send the request to our API
+    return (
+      isValidFname && isValidLname && isValidUserName && isValidUsernameLength
+    );
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Send a POST request to the server to register the user
+    if (
+      !validateUserData(
+        formData.firstName,
+        formData.lastName,
+        formData.username
+      )
+    ) {
+      return await Swal.fire({
+        title: "Error",
+        text: "Please enter a valid first, last and username.  Names should contain only letters and include at least two characters",
+        icon: "error",
+        confirmButtonText: "OK",
+      });
+    }
+
     try {
-      const response = await axiosInstance.post(
-        "/user/register",
-        {
-          // Sending user registration data
-          username: formData.username,
-          firstname: formData.firstName, 
-          lastname: formData.lastName,
-          email: formData.email,
-          password: formData.password
-        }
-      );
-      setSuccess("success"); 
+      const response = await axiosInstance.post("/user/register", {
+        // Sending user registration data
+        username: formData.username,
+        firstname: formData.firstName,
+        lastname: formData.lastName,
+        email: formData.email,
+        password: formData.password,
+      });
+      setSuccess("success");
       // navigate("/auth");
       // window.location.href = "/auth"; // This will navigate to the /auth page and refresh the application
 
-      if (response.status === 201) {
+      //   if (response.status === 201) {
 
-        setFormData({
-          username: "",
-          firstName: "",
-          lastName: "",
-          email: "",
-          password: "",
-        })
-        setError(null); // clear any previous errors
+      //     // setFormData({
+      //     //   username: "",
+      //     //   firstName: "",
+      //     //   lastName: "",
+      //     //   email: "",
+      //     //   password: "",
+      //     // })
+      //     setError(null); // clear any previous errors
+      //     await Swal.fire({
+      //       title: "Success!",
+      //       text: "User registered successfully!",
+      //       icon: "success",
+      //       confirmButtonText: "OK"
+      //     }).then(() => {
+      //       window.location.href = "/auth"; // This will navigate to the /auth page and refresh the application
+      //   }
+      //     );
+
+      // }
+      // if (response.status === 201) {
+      //   setError(null); // Clear any previous errors
+
+      //   // Show a success alert for registration
+      //   await Swal.fire({
+      //     title: "Success!",
+      //     text: "User registered successfully! Logging in...",
+      //     icon: "success",
+      //     confirmButtonText: "OK"
+      //   });
+
+      //   // Immediately log the user in
+      //   try {
+      //     const loginResponse = axiosInstance.post('/user/login', {
+      //       usernameOrEmail: formData.email, // Assuming formData.email contains the username or email
+      //       password: formData.password // The same password used for registration
+      //     });
+
+      //     const loginData = (await loginResponse).data;
+
+      //     if (loginResponse.status === 200) {
+      //       // Store the JWT token (use localStorage, sessionStorage, or cookies as appropriate)
+      //       localStorage.setItem("EV-Forum-token-G3-APR2024", loginResponse.data.token); // Store the token in local storage
+      //       window.location.href = "/";
+      //       console.log((await loginResponse).data)
+      //     } else {
+      //       setError(loginData.msg || "Login failed. Please try again.");
+      //     }
+
+      //   } catch (error) {
+      //     console.error("Login error:", error);
+      //     setError("An error occurred during login. Please try again.");
+      //   }
+      // }
+
+      if (response.status === 201) {
+        setError(null); // Clear any previous errors
+
+        // Show a success alert for registration
         await Swal.fire({
           title: "Success!",
-          text: "User registered successfully!",
+          text: "User registered successfully! Logging in...",
           icon: "success",
-          confirmButtonText: "OK"
-        }).then(() => {
-          window.location.reload();
+          confirmButtonText: "OK",
         });
+
+        // Immediately log the user in after we do the registration
+        try {
+          const loginResponse = await axiosInstance.post("/user/login", {
+            usernameOrEmail: formData.email, // we will make the user login with the registered email
+            password: formData.password, // The same password used for registration
+          });
+
+          // Check the response status after awaiting the promise
+          if (loginResponse.status === 200) {
+            // Store the JWT token (use localStorage, sessionStorage, or cookies as appropriate)
+            localStorage.setItem(
+              "EV-Forum-token-G3-APR2024",
+              loginResponse.data.token
+            ); // Store the token in local storage
+
+            // Redirect to home page
+            window.location.href = "/";
+          } else {
+            setError(
+              loginResponse.data.msg || "Login failed. Please try again."
+            );
+          }
+        } catch (error) {
+          console.error("Login error:", error);
+          setError("An error occurred during login. Please try again.");
+        }
       } else {
-        setError(response.data.Msg); // Handle error response
+        setError(response.data.Msg); 
         await Swal.fire({
           title: "Error",
           text: error || "Error submitting the form. Please try again.",
           icon: "error",
-          confirmButtonText: "OK"
+          confirmButtonText: "OK",
         });
         setSuccess(null); // clear any previous success message
       }
     } catch (err) {
       setError(
         err.response?.data?.Msg ||
-          "Error submitting the form. Please try again." + err)
-          await Swal.fire({
-            title: "Error",
-            text: err.response?.data?.Msg || "Error submitting the form. Please try again.",
-            icon: "error",
-            confirmButtonText: "OK"
-          });
+          "Error submitting the form. Please try again." + err
+      );
+      await Swal.fire({
+        title: "Error",
+        text:
+          err.response?.data?.Msg ||
+          "Error submitting the form. Please try again.",
+        icon: "error",
+        confirmButtonText: "OK",
+      });
       setSuccess(null); // clear any previous success message
     }
   };
 
   // Reset the form data after a successful registration
-  useEffect(() => {
-    if (success) {
-      const timer = setTimeout(() => {
-        setFormData({
-          username: "",
-          firstName: "",
-          lastName: "",
-          email: "",
-          password: "",
-        });
-        setSuccess(null); // Clear success message after a while
-      }, 3000);
+  // useEffect(() => {
+  //   if (success) {
+  //     const timer = setTimeout(() => {
+  //       setFormData({
+  //         username: "",
+  //         firstName: "",
+  //         lastName: "",
+  //         email: "",
+  //         password: "",
+  //       });
+  //       setSuccess(null); // Clear success message after a while
+  //     }, 3000);
 
-      return () => clearTimeout(timer);
-    }
-  }, [success]);
+  //     return () => clearTimeout(timer);
+  //   }
+  // }, [success]);
   return (
     <div className={classes.formcontainer}>
       <h2>Join the network</h2>
@@ -123,9 +229,7 @@ function Signup({ onSwitch }) {
         </a>
       </p>
       {error && <p className={classes.error}>{error}</p>}{" "}
-
       {success && <p className={classes.success}>{success}</p>}{" "}
-
       <form method="POST" onSubmit={handleSubmit}>
         <input
           type="text"
@@ -175,10 +279,10 @@ function Signup({ onSwitch }) {
             onClick={handleTogglePassword}
             className={classes.togglebtn}
           >
-            {showPassword ? "🙉" : "🙈"} 
+            {showPassword ? "🙉" : "🙈"}
           </button>
-          <div style={{ padding: "5px",fontSize: "14px" }}>
-            I agree to the <Link to="/privacyPolicy">privacy policy</Link> {" "} and {" "} 
+          <div style={{ padding: "5px", fontSize: "14px" }}>
+            I agree to the <Link to="/privacyPolicy">privacy policy</Link> and{" "}
             <Link to="/terms">terms of service</Link>.
           </div>
         </div>
