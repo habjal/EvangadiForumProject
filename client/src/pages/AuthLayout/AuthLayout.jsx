@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./authLayout.module.css"; // Assuming this is your CSS module
 import SignUp from "../SignUp/SignUp";
 import Login from "../Login/Login";
-import About from "../../pages/About/About";
+import About from "../About/About";
 import Layout from "../../Layout/Layout";
 
 export default function AuthLayout() {
@@ -19,25 +19,25 @@ export default function AuthLayout() {
   };
 
   return (
-   <Layout>
-     <div className={styles.container}>
-      <div className={styles.inner_container}>
-        <div
-          className={`${styles.formContainer} ${
-            isTransitioning ? styles.fadeOut : styles.fadeIn
-          }`}
-        >
-          {isLogin ? (
-          <Login onSwitch={toggleForm} />
-          ) : (
-            <SignUp onSwitch={toggleForm} />
-          )}
-        </div>
-        <div className={styles.about}>
-          <About />
+    <Layout>
+      <div className={styles.container}>
+        <div className={styles.inner_container}>
+          <div
+            className={`${styles.formContainer} ${
+              isTransitioning ? styles.fadeOut : styles.fadeIn
+            }`}
+          >
+            {isLogin ? (
+              <Login onSwitch={toggleForm} />
+            ) : (
+              <SignUp onSwitch={toggleForm} />
+            )}
+          </div>
+          <div className={styles.about}>
+            <About />
+          </div>
         </div>
       </div>
-    </div>
-   </Layout>
+    </Layout>
   );
-};
+}
