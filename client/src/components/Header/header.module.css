@@ -10,7 +10,7 @@
 }
 .navigation_links{
   font-size: 18px;
-  color: var(--blue-shade);
+  color: var(--blue-shade) !important;
   padding: 10px;
   font-weight: 500;
   margin-left: 10px;
@@ -19,7 +19,7 @@
 }
 
 .navigation_links:hover{
-  color:var(--primary-color);
+  color:var(--primary-color) !important;
   text-decoration: none;
 }
 
@@ -46,6 +46,7 @@
  .logout_btn:hover{
   background-color: var(--primary-color) !important; 
   color:#fff !important;
+  border: none;
 } 
 
 .px-5{
