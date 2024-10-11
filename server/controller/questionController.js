@@ -69,6 +69,7 @@ async function getQuestionAndAnswer(req, res) {
           q.title, 
           q.description, 
           q.createdAt AS question_createdAt,
+          u2.username as question_username,
           a.answerid, 
           a.userid AS answer_userid, 
           a.answer,
@@ -79,6 +80,7 @@ async function getQuestionAndAnswer(req, res) {
        LEFT JOIN 
           answers a ON q.questionid = a.questionid
           LEFT JOIN users u on u.userid = a.userid
+          left join users u2 on u2.userid = q.userid
        WHERE 
           q.questionid = ?
           order by a.createdAt desc
@@ -99,6 +101,7 @@ async function getQuestionAndAnswer(req, res) {
       title: rows[0].title,
       description: rows[0].description,
       qtn_createdAt: rows[0].question_createdAt,
+      qtn_username: rows[0].question_username,
       answers: rows
         .map((answer) => ({
           answerid: answer.answerid,

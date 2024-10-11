@@ -12,13 +12,13 @@
 }
 
 .formcontainer h2 {
-  margin: 10px 0;
+  margin: 15px 0;
   font-size: 18px;
   font-weight: bold;
 }
 .formcontainer p {
-  margin-bottom: 5px;
-  margin-top: 5px;
+  margin-bottom: 20px;
+  margin-top: 10px;
   font-size: 16px;
 }
 

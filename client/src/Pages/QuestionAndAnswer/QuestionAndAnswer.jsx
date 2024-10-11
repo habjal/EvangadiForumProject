@@ -110,6 +110,8 @@ function QuestionAndAnswer() {
                 {questionDetails?.description}
               </p>
               <p className={styles.question_date}>
+              Asked by: 
+                <span style={{fontWeight: "600"}}> @{questionDetails?.qtn_username} </span> <br />
                 <LuCalendarClock style={{ marginRight: "5px" }} size={19} />
                 {moment(questionDetails.qtn_createdAt)
                   .format("ddd, MMM DD, YYYY h:mm A")

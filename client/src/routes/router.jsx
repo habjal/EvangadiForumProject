@@ -8,7 +8,7 @@ import QuestionAndAnswer from "../Pages/QuestionAndAnswer/QuestionAndAnswer.jsx"
 import AuthLayout from "../Pages/AuthLayout/AuthLayout.jsx";
 import PageNotFound from "../Pages/PageNotFound/PageNotFound.jsx";
 import ForgotPassword from "../Pages/ForgotPassword/ForgotPassword.jsx";
-import AskQuestion from "../Pages/Question/AskQuestion/AskQuestion.jsx";
+import AskQuestion from "../Pages/Question/AskQuestion/AskQuestion";
 function AppRouter() {
   return (
     <Routes>

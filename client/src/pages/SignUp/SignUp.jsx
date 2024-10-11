@@ -76,65 +76,7 @@ function Signup({ onSwitch }) {
         password: formData.password,
       });
       setSuccess("success");
-      // navigate("/auth");
-      // window.location.href = "/auth"; // This will navigate to the /auth page and refresh the application
-
-      //   if (response.status === 201) {
-
-      //     // setFormData({
-      //     //   username: "",
-      //     //   firstName: "",
-      //     //   lastName: "",
-      //     //   email: "",
-      //     //   password: "",
-      //     // })
-      //     setError(null); // clear any previous errors
-      //     await Swal.fire({
-      //       title: "Success!",
-      //       text: "User registered successfully!",
-      //       icon: "success",
-      //       confirmButtonText: "OK"
-      //     }).then(() => {
-      //       window.location.href = "/auth"; // This will navigate to the /auth page and refresh the application
-      //   }
-      //     );
-
-      // }
-      // if (response.status === 201) {
-      //   setError(null); // Clear any previous errors
-
-      //   // Show a success alert for registration
-      //   await Swal.fire({
-      //     title: "Success!",
-      //     text: "User registered successfully! Logging in...",
-      //     icon: "success",
-      //     confirmButtonText: "OK"
-      //   });
-
-      //   // Immediately log the user in
-      //   try {
-      //     const loginResponse = axiosInstance.post('/user/login', {
-      //       usernameOrEmail: formData.email, // Assuming formData.email contains the username or email
-      //       password: formData.password // The same password used for registration
-      //     });
-
-      //     const loginData = (await loginResponse).data;
-
-      //     if (loginResponse.status === 200) {
-      //       // Store the JWT token (use localStorage, sessionStorage, or cookies as appropriate)
-      //       localStorage.setItem("EV-Forum-token-G3-APR2024", loginResponse.data.token); // Store the token in local storage
-      //       window.location.href = "/";
-      //       console.log((await loginResponse).data)
-      //     } else {
-      //       setError(loginData.msg || "Login failed. Please try again.");
-      //     }
-
-      //   } catch (error) {
-      //     console.error("Login error:", error);
-      //     setError("An error occurred during login. Please try again.");
-      //   }
-      // }
-
+    
       if (response.status === 201) {
         setError(null); // Clear any previous errors
 

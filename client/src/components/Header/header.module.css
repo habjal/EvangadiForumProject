@@ -25,6 +25,8 @@
 
 .login_btn{
   padding:10px 20px !important;
+  color: white !important;
+  background-color: var(--blue-shade) !important;
 }
 
 .login_btn:hover{
