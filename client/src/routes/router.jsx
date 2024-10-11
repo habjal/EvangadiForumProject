@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Footer from "../components/Footer/Footer";
 import Home from "../pages/Home/Home";
-import AskQuestion from "../pages/AskQuestion/AskQuestion";
+import AskQuestion from "../pages/Question/AskQuestion/AskQuestion.jsx";
 import HowItWorks from "../pages/Howitworks/HowItWorks";
 import Terms from "../components/Footer/Terms";
 import Privacy from "../components/Footer/Privacy";
