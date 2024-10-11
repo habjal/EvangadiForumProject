@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import "./App.css";
 import { useNavigate } from "react-router-dom";
-import AppRouter from "./routes/router";
+import AppRouter from "./routes/Router";
 import { axiosInstance } from "./utility/axios";
 
 export const UserState = createContext(); // Create a context for the user data
@@ -12,33 +12,31 @@ function App() {
 
   const getUserData = async () => {
     try {
-      const token = localStorage.getItem("EV-Forum-token-G3-APR2024")// Get the token stored during login from local storage
+      const token = localStorage.getItem("EV-Forum-token-G3-APR2024"); // Get the token stored during login from local storage
       if (!token) {
-        navigate("/auth")
+        navigate("/auth");
       }
 
-      const userData =  await axiosInstance.get("/user/check", 
-        { headers: { Authorization: "Bearer "+token } }).then((response) => response.data)
-      console.log(userData)
-      setUser(userData) // Store the user data in state so that it can be accessed by others too
-
+      const userData = await axiosInstance
+        .get("/user/check", { headers: { Authorization: "Bearer " + token } })
+        .then((response) => response.data);
+      console.log(userData);
+      setUser(userData); // Store the user data in state so that it can be accessed by others too
     } catch (error) {
-      console.log(error)
-      navigate("/auth")
+      console.log(error);
+      navigate("/auth");
     }
-  }
-  
-  useEffect(   ()=>  {
+  };
+
+  useEffect(() => {
     getUserData();
-  
-  }, [])
+  }, []);
 
   return (
     <UserState.Provider value={{ user, setUser }}>
       <AppRouter />
     </UserState.Provider>
   );
-
 }
 
 export default App;
