@@ -1,14 +1,14 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Terms from "../components/Footer/Terms";
-import PrivacyPolicy from "../Pages/privacy-policy/Privacy-police";
-import QuestionAndAnswer from "../Pages/QuestionAndAnswer/QuestionAndAnswer";
-import AuthLayout from "../Pages/AuthLayout/AuthLayout";
-import PageNotFound from "../Pages/PageNotFound/PageNotFound";
-import ForgotPassword from "../Pages/ForgotPassword/ForgotPassword";
+import PrivacyPolicy from '../Pages/privacy-policy/Privacy-police';
+import QuestionAndAnswer from '../Pages/QuestionAndAnswer/QuestionAndAnswer';
+import AuthLayout from '../Pages/AuthLayout/AuthLayout';
+import PageNotFound from '../Pages/PageNotFound/PageNotFound';
+import ForgotPassword from '../Pages/ForgotPassword/ForgotPassword';
 import Home from '../Pages/Home/Home'
 import Howitworks from '../Pages/Howitworks/HowItWorks'
-import AskQuestion from "../pages/Question/AskQuestion/AskQuestion";
+import AskQuestion from '../pages/Question/AskQuestion/AskQuestion';
 
 function AppRouter() {
   return (
