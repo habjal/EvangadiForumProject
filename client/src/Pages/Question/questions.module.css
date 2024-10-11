@@ -29,3 +29,33 @@
     border:none;
     border-bottom: 1.5px solid orange;
 }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination button {
+  padding: 15px;
+  margin: 0 10px;
+  border: none;
+  background-color: var(--blue-shade);
+  color: white;
+  cursor: pointer;
+  border-radius: 7px;
+}
+.pagination button:hover {
+  background-color: var(--primary-color);
+}
+
+.pagination button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.pagination span {
+  padding: 10px;
+  font-size: 16px;
+  align-self: center;
+}
