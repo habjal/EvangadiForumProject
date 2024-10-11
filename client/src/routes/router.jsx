@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "../Pages/Home/Home";
 import HowItWorks from "../Pages/Howitworks/HowItWorks";
 import Terms from "../components/Footer/Terms";
 import QuestionAndAnswer from "../Pages/QuestionAndAnswer/QuestionAndAnswer";
@@ -9,6 +8,7 @@ import PageNotFound from "../Pages/PageNotFound/PageNotFound";
 import ForgotPassword from "../Pages/ForgotPassword/ForgotPassword";
 import AskQuestion from "../Pages/Question/AskQuestion/AskQuestion";
 import PrivacyPolicy from "../Pages/PrivacyPolicy/PrivacyPolicy";
+import Home from "../Pages/Home/Home";
 
 function AppRouter() {
   return (
