@@ -9,10 +9,10 @@
 
 }
 .navigation_links{
-  font-size: 18px;
+  font-size: 18px !important;
   color: var(--blue-shade) !important;
   padding: 10px;
-  font-weight: 500;
+  font-weight: 500 !important;
   margin-left: 10px;
   text-decoration: none;
 
@@ -28,6 +28,7 @@
   color: white !important;
   background-color: var(--blue-shade) !important;
 }
+
 
 .login_btn:hover{
   background-color: var(--blue-main) !important;
@@ -59,7 +60,8 @@
     margin-left: 0;
     text-align: center;
     background-color: transparent;
-    color: var(--blue-main) !important;
+    /* color: var(--blue-main) !important; */
+    color:white;
   }
     .navigation_links{
       /* color: blue; */
