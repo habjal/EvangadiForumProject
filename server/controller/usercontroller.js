@@ -1,10 +1,11 @@
-const dbconnection = require("../config/dbconfig");
+const dbConnection = require("../config/dbConfig");
 const bcrypt = require("bcrypt");
 const { use } = require("bcrypt/promises");
 const { StatusCodes } = require("http-status-codes");
 const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
 dotenv.config();
+
 async function register(req, res) {
   const { username, firstname, lastname, email, password } = req.body;
 
@@ -31,7 +32,7 @@ async function register(req, res) {
 
   try {
     // Check if the username or email already exists
-    const [user] = await dbconnection.query(
+    const [user] = await dbConnection.query(
       "SELECT username, userid FROM users WHERE username = ? OR email = ?",
       [username, email]
     );
@@ -47,7 +48,7 @@ async function register(req, res) {
     const hashedPassword = await bcrypt.hash(password, salt);
 
     // Insert new user into the database
-    await dbconnection.query(
+    await dbConnection.query(
       "INSERT INTO users (username, firstname, lastname, email, password,createdAt) VALUES (?, ?, ?, ?, ?,?)",
       [username, firstname, lastname, email, hashedPassword, formattedTimestamp]
     );
@@ -68,22 +69,22 @@ async function login(req, res) {
   // console.log(email, password);
   // Check if email and password are provided
   if (!usernameOrEmail || !password) {
-    return res
-      .status(StatusCodes.BAD_REQUEST)
-      .json({ Msg: "Your email or password is incorrect. Please check your details and try again." }); 
+    return res.status(StatusCodes.BAD_REQUEST).json({
+      Msg: "Your email or password is incorrect. Please check your details and try again.",
+    });
   }
 
   try {
     // Query the user by email or username
-    const [user] = await dbconnection.query(
+    const [user] = await dbConnection.query(
       "SELECT username, userid, password FROM users WHERE email = ? OR username = ?",
-  [usernameOrEmail, usernameOrEmail]
+      [usernameOrEmail, usernameOrEmail]
     );
 
     // Check if user exists
     if (user.length === 0) {
       return res.status(StatusCodes.NOT_FOUND).json({
-        msg: "Invalid credentials. Please check your details and try again.", // user not found but we dont want to tell this to the users directly 
+        msg: "Invalid credentials. Please check your details and try again.", // user not found but we dont want to tell this to the users directly
       });
     }
 
