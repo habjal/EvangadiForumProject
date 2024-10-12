@@ -1,7 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Terms from "../components/Footer/Terms";
-im
 import Howitworks from '../Pages/Howitworks/HowItWorks'
 import QuestionAndAnswer from "../Pages/QuestionAndAnswer/QuestionAndAnswer";
 import AskQuestion from "../Pages/Question/AskQuestion/AskQuestion";
@@ -9,6 +8,7 @@ import AuthLayout from "../Pages/AuthLayout/AuthLayout";
 import ForgotPassword from "../Pages/ForgotPassword/ForgotPassword";
 import PageNotFound from "../Pages/PageNotFound/PageNotFound";
 import PrivacyPolicy from "../Pages/PrivacyPolicy/PrivacyPolicy";
+import Home from "../Pages/Home/Home";
 
 function AppRouter() {
   return (
