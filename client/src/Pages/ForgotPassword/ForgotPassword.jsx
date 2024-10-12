@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { axiosInstance } from "../../utility/axios";
-import classes from "./forgotPassword.module.css";
+import classes from "./ForgotPassword.module.css";
 import Layout from "../../Layout/Layout";
 
 function ForgotPassword() {
