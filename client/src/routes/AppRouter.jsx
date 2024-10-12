@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Terms from "../components/Footer/Terms";
-import Home from '../Pages/Home/Home'
+im
 import Howitworks from '../Pages/Howitworks/HowItWorks'
 import QuestionAndAnswer from "../Pages/QuestionAndAnswer/QuestionAndAnswer";
 import AskQuestion from "../Pages/Question/AskQuestion/AskQuestion";
