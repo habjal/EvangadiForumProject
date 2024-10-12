@@ -8,7 +8,7 @@ import PageNotFound from "../Pages/PageNotFound/PageNotFound";
 import PrivacyPolicy from "../Pages/PrivacyPolicy/PrivacyPolicy";
 import Home from "../Pages/Home/Home";
 import AuthLayout from '../Pages/AuthLayout/AuthLayout'
-import HowItWorks from "../pages/Howitworks/HowItWorks";
+import HowItWorks from "../pages/HowItWorks/HowItWorks";
 
 function AppRouter() {
   return (
