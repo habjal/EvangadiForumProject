@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Terms from "../components/Footer/Terms";
-import Howitworks from '../Pages/HowItWorks/HowItWorks'
+import HowItWorks from '../Pages/HowItWorks/HowItWorks'
 import QuestionAndAnswer from "../Pages/QuestionAndAnswer/QuestionAndAnswer";
 import AskQuestion from "../Pages/Question/AskQuestion/AskQuestion";
 import AuthLayout from "../Pages/AuthLayout/AuthLayout";
@@ -16,7 +16,7 @@ function AppRouter() {
       <Route path="/" element={<Home />} />
       <Route path="/ask" element={<AskQuestion />} />
       <Route path="/question/:questionId" element={<QuestionAndAnswer />} />
-      <Route path="/howitworks" element={<Howitworks />} />
+      <Route path="/howitworks" element={<HowItWorks />} />
       <Route path="/terms" element={<Terms />} />
       <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
       <Route path="/auth" element={<AuthLayout />} />

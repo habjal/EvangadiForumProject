@@ -9,7 +9,6 @@ const HowItWorks = () => {
   const {user}=useContext(UserState);
   const userId = user?.userid;
 
-
   return (
    <Layout>
      <div className={styles.container}>
