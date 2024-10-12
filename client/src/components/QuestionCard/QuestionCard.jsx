@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./questionCard.module.css";
 import { MdAccountCircle } from "react-icons/md";
 import { FaChevronRight } from "react-icons/fa6";

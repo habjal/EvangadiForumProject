@@ -1,10 +1,10 @@
-import React, { useContext, useState } from "react";
+import  { useContext } from "react";
 import classes from "./header.module.css";
 import EvangadiLogo from "../../Assets/Images/evangadi-logo-header.png";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Navbar, Nav, Button, Container } from "react-bootstrap";
-import { UserState } from "../../App";
+import { UserState } from "../../App.jsx";
 
 function Header() {
   const {user}=useContext(UserState);

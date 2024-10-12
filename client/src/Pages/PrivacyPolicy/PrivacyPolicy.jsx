@@ -1,8 +1,7 @@
-import React from "react";
-import Header from "../../components/Header/Header";
+import Header from "../../components/Header/Header.jsx";
 import styles from "./PrivacyPolicy.module.css";
 import { Link } from "react-router-dom";
-import Footer from "../../components/Footer/Footer";
+import Footer from "../../components/Footer/Footer.jsx";
 
 function PrivacyPolicy() {
   return (

@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import { axiosInstance } from "../../utility/axios";
 import classes from "./ForgotPassword.module.css";
-import Layout from "../../Layout/Layout";
+import Layout from "../../Layout/Layout.jsx";
 
 function ForgotPassword() {
   const [email, setEmail] = useState("");
@@ -39,7 +39,7 @@ function ForgotPassword() {
       <div className={classes.innerContainer}>
         <h2>Forgot your password?</h2>
         <p>
-          Enter your email address, and we'll send you a link to reset your
+          Enter your email address, and we&apos;ll send you a link to reset your
           password.
         </p>
         {message && <p className={classes.success}>{message}</p>}

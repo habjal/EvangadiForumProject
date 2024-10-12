@@ -1,8 +1,9 @@
 import { createContext, useEffect, useState } from "react";
 import "./App.css";
 import { useNavigate } from "react-router-dom";
-import AppRouter from "./routes/AppRouter";
+
 import { axiosInstance } from "./utility/axios";
+import AppRouter from "./routes/AppRouter.jsx";
 
 export const UserState = createContext(); // Create a context for the user data
 

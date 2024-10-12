@@ -1,10 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
+import  { useContext, useEffect, useState } from "react";
 import styles from "./home.module.css";
 import { BsArrowRightSquareFill } from "react-icons/bs";
-import Questions from "../Question/Questions";
-import Layout from "../../Layout/Layout";
+import Questions from "../Question/Questions.jsx";
+import Layout from "../../Layout/Layout.jsx";
 import { Link } from "react-router-dom";
-import { UserState } from "../../App";
+import { UserState } from "../../App.jsx";
 
 function Home() {
   const { user } = useContext(UserState);

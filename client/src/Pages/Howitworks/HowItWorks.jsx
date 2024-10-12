@@ -1,9 +1,8 @@
-import React, { useContext, useState } from "react";
+import  { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./HowItWorks.module.css";
-import Layout from "../../Layout/Layout";
-import { UserState } from "../../App";
-import Header from "../../components/Header/Header";
+import Layout from "../../Layout/Layout.jsx";
+import { UserState } from "../../App.jsx";
 
 const HowItWorks = () => {
   const { user } = useContext(UserState);

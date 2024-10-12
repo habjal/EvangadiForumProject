@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import  { useState } from "react";
+
 import classes from "./signUp.module.css";
-import Login from "../Login/Login";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { axiosInstance } from "../../utility/axios";
 import Swal from "sweetalert2";
 
 function Signup({ onSwitch }) {
-  const navigate = useNavigate();
   const [error, setError] = useState(null); // for error message
   const [success, setSuccess] = useState(null); // for success message
   const [showPassword, setShowPassword] = useState(false); // State for showing/hiding password

@@ -1,13 +1,12 @@
-import React, { useState } from "react";
-import {axiosInstance} from "../../utility/axios";
+import { useState } from "react";
+import {axiosInstance} from "../../utility/axios.js";
 import classes from "./login.module.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 function Login({ onSwitch }) {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
-  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     usernameOrEmail: "",

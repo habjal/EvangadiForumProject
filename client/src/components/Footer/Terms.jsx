@@ -1,7 +1,6 @@
-import React from "react";
 import Classes from "./footer.module.css";
 import { Link } from "react-router-dom";
-import Layout from "../../Layout/Layout";
+import Layout from "../../Layout/Layout.jsx";
 
 function Terms() {
   return (

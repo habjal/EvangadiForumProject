@@ -1,9 +1,7 @@
-import React from 'react'
-import Header from '../../components/Header/Header'
-import styles from './pageNotFound.module.css'
+import styles from './PageNotFound.module.css'
 import { Link } from 'react-router-dom'
 import { useEffect } from 'react'
-import Layout from '../../Layout/Layout'
+import Layout from '../../Layout/Layout.jsx'
 function PageNotFound() {
     useEffect(() => {
         document.title = 'Evangadi Forum | Page Not Found'
@@ -11,7 +9,6 @@ function PageNotFound() {
     return (
         <>
             <Layout >
-                {/* <Header /> */}
                 <section className={`${styles.mainDiv}`}>
                     <div className={styles.TextContainer}>
                         <h3>

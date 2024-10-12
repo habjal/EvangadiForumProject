@@ -1,9 +1,9 @@
-import React, { useContext, useRef } from "react";
+import  { useContext, useRef } from "react";
 import classes from "./askQuestion.module.css";
 import { axiosInstance } from "../../../utility/axios";
 import { Link, useNavigate } from "react-router-dom";
-import Layout from "../../../Layout/Layout";
-import { UserState } from "../../../App";
+import Layout from "../../../Layout/Layout.jsx";
+import { UserState } from "../../../App.jsx";
 // this is imported for bootstrap sweet alert
 import Swal from "sweetalert2";
 

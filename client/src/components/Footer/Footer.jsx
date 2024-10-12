@@ -1,4 +1,3 @@
-import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import classes from "./footer.module.css";
 import FacebookOutlined from "@mui/icons-material/FacebookOutlined";

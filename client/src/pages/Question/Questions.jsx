@@ -1,9 +1,9 @@
-import React, { useEffect, useState, useContext } from "react";
+import  { useEffect, useState, useContext } from "react";
 import styles from "./questions.module.css";
-import { axiosInstance } from "../../utility/axios";
-import QuestionCard from "../../components/QuestionCard/QuestionCard";
-import Loader from "../../components/Loader/Loader";
-import { UserState } from "../../App";
+import { axiosInstance } from "../../utility/axios.js";
+import QuestionCard from "../../components/QuestionCard/QuestionCard.jsx";
+import Loader from "../../components/Loader/Loader.jsx";
+import { UserState } from "../../App.jsx";
 
 function Question() {
   const [questions, setQuestions] = useState([]); // Store all questions
@@ -13,7 +13,6 @@ function Question() {
   const questionsPerPage = 5; // Number of questions per page
 
   const { user } = useContext(UserState);
-  const loginUsername = user?.username;
 
   // Fetch questions from API
   useEffect(() => {

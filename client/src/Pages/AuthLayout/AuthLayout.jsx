@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "./authLayout.module.css"; // Assuming this is your CSS module
-import SignUp from "../SignUp/SignUp";
-import Login from "../Login/Login";
-import About from "../About/About";
-import Layout from "../../Layout/Layout";
+import SignUp from "../SignUp/SignUp.jsx";
+import Login from "../Login/Login.jsx";
+import About from "../About/About.jsx";
+import Layout from "../../Layout/Layout.jsx";
 
 export default function AuthLayout() {
   const [isLogin, setisLogin] = useState(true); // Renamed the setter to match the state

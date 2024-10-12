@@ -1,13 +1,13 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import  { useContext, useEffect, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { axiosInstance } from "../../utility/axios";
-import Layout from "../../Layout/Layout";
+import { axiosInstance } from "../../utility/axios.js";
+import Layout from "../../Layout/Layout.jsx";
 import styles from "./answer.module.css";
 import { MdAccountCircle } from "react-icons/md";
 import { FaClipboardQuestion } from "react-icons/fa6";
 import { MdOutlineQuestionAnswer } from "react-icons/md";
 import moment from "moment";
-import { UserState } from "../../App";
+import { UserState } from "../../App.jsx";
 import { LuCalendarClock } from "react-icons/lu";
 import Swal from "sweetalert2";
 
