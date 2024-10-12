@@ -7,7 +7,7 @@ const cors = require("cors");
 
 const dotenv = require("dotenv");
 dotenv.config();
-const port = process.env.VITE_SERVER_PORT;
+const port = process.env.VITE_SERVER_PORT || 5000;
 
 //db connection
 const dbConnection = require("./config/dbconfig");
@@ -17,7 +17,7 @@ app.get("/", (req, res) => {
   res.status(200).send("welcome");
 });
 //cors middleware
-app.use(cors((origins = ["http://localhost:5173"])));
+app.use(cors((origins = ["http://localhost:5173","https://evangadi-forum-project-frontend.vercel.app/"])));
 
 //json middleware
 app.use(express.json());
