@@ -15,7 +15,7 @@ function Footer() {
           <Link to="/">
             <img
               src={footerLogo}
-              alt=""
+              alt=" evangagadi logo"
             />
           </Link>
         </div>
