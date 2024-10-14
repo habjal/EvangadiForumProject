@@ -139,23 +139,7 @@ function Signup({ onSwitch }) {
     }
   };
 
-  // Reset the form data after a successful registration
-  // useEffect(() => {
-  //   if (success) {
-  //     const timer = setTimeout(() => {
-  //       setFormData({
-  //         username: "",
-  //         firstName: "",
-  //         lastName: "",
-  //         email: "",
-  //         password: "",
-  //       });
-  //       setSuccess(null); // Clear success message after a while
-  //     }, 3000);
-
-  //     return () => clearTimeout(timer);
-  //   }
-  // }, [success]);
+ 
   return (
     <div className={classes.formcontainer}>
       <h2>Join the network</h2>
