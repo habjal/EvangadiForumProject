@@ -1,6 +1,5 @@
 import { useState } from "react";
-import styles from "./authLayout.module.css"; // Assuming this is your CSS module
-import SignUp from "../SignUp/SignUp.jsx";
+import styles from "./authLayout.module.css"; 
 import Login from "../Login/Login.jsx";
 import About from "../About/About.jsx";
 import Layout from "../../Layout/Layout.jsx";
@@ -15,7 +14,7 @@ export default function AuthLayout() {
     setTimeout(() => {
       setisLogin((prev) => !prev); // Change the component after fade-out
       setIsTransitioning(false); // End the transition after fade-in
-    }, 500); // 500ms matches the CSS transition duration
+    }, 500); // 500ms - CSS transition duration
   };
 
   return (
