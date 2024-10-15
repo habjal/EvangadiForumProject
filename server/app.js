@@ -14,7 +14,7 @@ const dbConnection = require("./config/dbConfig");
 
 // test get request
 app.get("/", (req, res) => {
-  res.status(200).send("welcome");
+  res.status(200).send("welcome-to Evangadi-");
 });
 //cors middleware
 app.use(
