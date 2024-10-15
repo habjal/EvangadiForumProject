@@ -21,6 +21,7 @@ Evangadi Forum is a platform where users can securely register, log in, ask ques
 - **Upvoting:** Allow users to upvote valuable answers and questions.
 - **Content Reporting:** Implement reporting for inappropriate or irrelevant content.
 - **Tagging System:** Add tags to categorize content, making it easier to browse topics.
+- **Adding WYSIWYG editor:** Add tags to categorize content, making it easier to browse topics.
 
 ## Getting Started
 To set up the project locally, follow these steps:
